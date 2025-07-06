@@ -1,0 +1,51 @@
+.flex-center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-btw{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex-start{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.flex-end{
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.flex-even{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.flex-around{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.glassmorphic{
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter: blur(10px);
+}
+ 
+
+.inter {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.orbitron {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.text-primary-purple.active{
+    border-bottom:4px solid #6B46C1;
+}
