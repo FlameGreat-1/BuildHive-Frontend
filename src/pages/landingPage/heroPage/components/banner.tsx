@@ -13,6 +13,7 @@ const Banner = () => {
             <div className="w-full flex-center">
                 <div className="relative z-[2] ">
                     <motion.img src={phones} alt={'phones'}
+                        loading='lazy'
                         // animate={{}}
                         transition={{
                             duration: 2,
@@ -21,6 +22,7 @@ const Banner = () => {
                         }}
                         className="w-[100%] " />
                     <motion.img src={paintB} alt={'paintB'}
+                        loading='lazy'
                         animate={{ y: -30 }}
                         transition={{
                             // duration:2,
@@ -33,6 +35,7 @@ const Banner = () => {
                         }}
                         className="w-[25%] absolute top-[50%] right-[5%]" />
                     <motion.img src={gear} alt={'gear'}
+                        loading='lazy'
                         animate={{ rotate: 360 }}
                         transition={{
                             duration: 10,
@@ -41,6 +44,7 @@ const Banner = () => {
                         }}
                         className="w-[25%] absolute  top-[5%] right-[30%]" />
                     <motion.img src={hammer} alt={'hammer'}
+                        loading='lazy'
                         animate={{ rotate: [12, -12, 12] }}
                         transition={{
                             duration: 2,
@@ -49,6 +53,7 @@ const Banner = () => {
                         }}
                         className="w-[25%] absolute origin-bottom left-[0%] top-[40%]" />
                     <motion.img src={screwD} alt={'Screw driver'}
+                        loading='lazy'
                         animate={{ y: [0, -20, 0] }}
                         transition={{
                             duration: 2,
