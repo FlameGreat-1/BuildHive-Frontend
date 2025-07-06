@@ -4,8 +4,8 @@ import { Outlet } from 'react-router-dom';
 
 const LandingPage: React.FC = () => {
     return (
-        <div className='w-screen overflow-x-none h-[100dvh] bg-light-white text-purple-bg'>
-            <header className='absolute flex-center top-0 w-full z-10'>
+        <div className='w-screen overflow-x-none overflow-y-auto h-[100dvh] bg-light-white text-purple-bg'>
+            <header className='fixed top-0 flex-center w-full z-10'>
                 <NavBar/>
             </header>
             <div className=''>

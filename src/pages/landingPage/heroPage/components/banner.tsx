@@ -10,8 +10,8 @@ import { motion } from 'framer-motion';
 const Banner = () => {
     return (
         <div className="relative w-[90%] ">
-            <div className="w-full flex-center">
-                <div className="relative z-[2] ">
+            <div className=" flex-center">
+                <div className="relative z-[2]  flex-center">
                     <motion.img src={phones} alt={'phones'}
                         loading='lazy'
                         // animate={{}}
@@ -63,8 +63,8 @@ const Banner = () => {
                         className="w-[25%] absolute bottom-0 left-[25%]" />
                 </div>
                 <motion.div
-                    className="w-[80%] aspect-square absolute rounded-[50%] bg-primary-purple z-[1]"
-                    animate={{ scale: [1, 1.1, 1] }}
+                    className="w-[80%] xl:w-[60%] aspect-square absolute rounded-[50%] bg-primary-purple z-[1]"
+                    animate={{ scale: [1, 1.2, 1] }}
                     transition={{
                         duration: 5,
                         repeat: Infinity,
