@@ -1,16 +1,13 @@
 
 import React, { useState } from "react";
-// import { motion, AnimatePresence } from "framer-motion";
 import PurpleBtn from "../../../../generalComponents/purpleBtn";
 import hammer from '../../../../assets/icons/hammer.svg'
 import smallBag from '../../../../assets/icons/smallBag.svg'
 import entP from '../../../../assets/icons/entP.svg'
 import RatingsComp, { type Rating } from "./ratingsComp";
-import { motion } from 'framer-motion';
 import ProfilePic from '../../../../assets/images/profilePic.png'
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRef } from "react";
+
+import { useAutoScroll } from "../../../../hooks/useAutoScroll";
 
 
 
@@ -125,26 +122,16 @@ const tabSlides: Rating[] = [
 ]
 
 export const CarouselTabs: React.FC = () => {
-  const scrollRef = useRef<HTMLDivElement>(null)
+  
   const [activeTab, setActiveTab] = useState<Tab>("Tradie");
-  // const [slideIndex, setSlideIndex] = useState(0);
 
-  // const slides = tabSlides[activeTab];
-  // const visibleSlides = slides.slice(slideIndex, slideIndex + 2);
+  const scroll = useAutoScroll<HTMLDivElement>({
+    speed: 1,
+    direction: "right",
+    pauseOnHover: true,
+  });
 
-  const handlePrev = () => {
-    scrollRef.current?.scrollBy({
-      left: -300,
-      behavior: 'smooth'
-    })
-  };
-
-  const handleNext = () => {
-    scrollRef.current?.scrollBy({
-      left: 300,
-      behavior: 'smooth'
-    })
-  };
+  
 
   return (
     <section className="max-w-6xl w-full px-4 py-12 text-center">
@@ -171,37 +158,12 @@ export const CarouselTabs: React.FC = () => {
       </div>
 
       <div className="relative  hide-scrollbar">
-        <motion.button
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: 'easeInOut'
+       
 
-          }}
-          onClick={handlePrev}
-          // disabled={slideIndex === 0}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white shadow p-2 rounded-[50%] z-[10]"
-        >
-          <FontAwesomeIcon icon={faAngleLeft} />
-        </motion.button>
-        <motion.button
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: 'linear'
-
-          }}
-          onClick={handleNext}
-          // disabled={slideIndex >= slides.length - 2}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white shadow p-2 rounded-[50%] z-[10]"
-        >
-          <FontAwesomeIcon icon={faAngleRight} />
-        </motion.button>
-
-        <div className="overflow-x-scroll hide-scroll flex " ref={scrollRef}>
-          <div className="inline-grid grid-rows-3 items-start auto-cols-auto grid-flow-col no-sc hide-scrollbar gap-4 ">
+        <div className="overflow-x-scroll hide-scroll flex " ref={scroll}>
+          <div
+            // ref={scroll}
+            className="inline-grid grid-rows-2 items-start auto-cols-auto grid-flow-col no-sc hide-scrollbar gap-4 ">
             {tabSlides.map((card, index) => (
               card.title.includes(activeTab) && <RatingsComp {...card} key={index} />
             ))}

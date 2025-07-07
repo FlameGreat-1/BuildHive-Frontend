@@ -9,7 +9,7 @@ export interface component {
 
 const RegSectionComp = ({title, p,subtitle,image}:component) => {
   return (
-    <div className='flex md:items-center justify-center flex-col  md:flex-row w-full max-w-6xl p-4 gap-4'>
+    <div className='flex md:items-center justify-center flex-col  sm:flex-row w-full max-w-6xl p-4 gap-4'>
         <div className="flex items-center md:items-start justify-center flex-col w-full sm:w-1/2  text-center md:text-left">
             <p className="text-purple-bg font-bold text-md md:text-lg">
                 {title}

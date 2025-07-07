@@ -101,7 +101,7 @@ export const FeatureTabs: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.4 }}
-          className="grid md:grid-cols-2 gap-6"
+          className="grid sm:grid-cols-2 gap-6"
         >
           {tabData[activeTab].map((card, idx) => (
             <motion.div

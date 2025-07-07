@@ -1,7 +1,6 @@
 import { NavLink, Link } from "react-router-dom"
 import buildHiveIcon from '../assets/icons/buildHive.svg';
 import PurpleBtn from "./purpleBtn";
-// import LightPurpleBtn from "./lightPurpleBtn";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { useState } from "react";

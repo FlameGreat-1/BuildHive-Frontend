@@ -11,7 +11,7 @@ const SixthSection = () => {
         title: 'Smart CRM',
         p: <p>Keep <span className="text-secondary-blue">every client detail</span> in one place.</p>,
         image: crmImg,
-        subtitle: 'Enable JobCast Mode to let nearby clients know you\'re available. Get matched with urgent or same-day job requests in real time and grow your workflow on demand.'
+        subtitle: 'Build Hive\'s built-in CRM lets you track communication, job history, reminders, and notes — so you never miss a follow-up or forget a name.'
     }
 
     return (
