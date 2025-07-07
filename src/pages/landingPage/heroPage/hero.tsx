@@ -1,17 +1,21 @@
-// import PurpleBtn from "../../../generalComponents/purpleBtn"
-// // import purpleSq from '../../../assets/images/purpleSquare.png'
-// // import WhiteFeatureComp from './whiteFatureomp';
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-// import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
-// import Banner from "./components/banner";
 
+import FourthSection from "./fourthSection"
 import HeroSection from "./components/heroSection"
+import SecondSection from "./secondSection"
+import ThirdSection from "./thirdSection"
+import FifthSection from "./fifthSection"
+import SixthSection from "./sixthSection"
 
 const Hero = () => {
 
   return (
     <div>
-     <HeroSection/>
+      <HeroSection />
+      <SecondSection />
+      <ThirdSection />
+      <FourthSection />
+      <FifthSection/>
+      <SixthSection/>
     </div>
   )
 }

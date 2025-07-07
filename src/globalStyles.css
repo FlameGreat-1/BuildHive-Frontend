@@ -49,3 +49,11 @@
 .text-primary-purple.active{
     border-bottom:4px solid #6B46C1;
 }
+
+.hide-scroll::-webkit-scrollbar{
+    display: none;
+}
+.hide-scroll{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
