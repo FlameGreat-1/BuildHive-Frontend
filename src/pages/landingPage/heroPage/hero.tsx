@@ -8,6 +8,7 @@ import SixthSection from "./sixthSection"
 import CtaComp from "./components/ctaComp"
 import Footer from "../../../generalComponents/footer"
 import TestimonialSection from "./testimonialSection"
+import FAQSection from "./components/FAQSection"
 
 const Hero = () => {
 
@@ -17,12 +18,12 @@ const Hero = () => {
       <SecondSection />
       <ThirdSection />
       <FourthSection />
-      <FifthSection/>
-      <SixthSection/>
-      <TestimonialSection/>
-
-      <CtaComp/>
-      <Footer/>
+      <FifthSection />
+      <SixthSection />
+      <TestimonialSection />
+      <FAQSection />
+      <CtaComp />
+      <Footer />
     </div>
   )
 }
