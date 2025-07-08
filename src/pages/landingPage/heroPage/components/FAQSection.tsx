@@ -60,7 +60,7 @@ export default function FAQSection() {
     );
 
   return (
-    <div className="flex-center w-full">
+    <div className="flex-center w-full" id="faq-section">
       <div className="flex flex-col justify-center items-center md:flex-row gap-6 p-4 w-full max-w-6xl text-black">
         <div className="flex flex-between lg:w-[40%] flex-col gap-8 p-8 w-fit">
           <div className="text-2xl sm:text-4xl font-bold text-center md:text-left ">
