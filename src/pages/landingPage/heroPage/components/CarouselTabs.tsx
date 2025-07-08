@@ -4,10 +4,11 @@ import PurpleBtn from "../../../../generalComponents/purpleBtn";
 import hammer from '../../../../assets/icons/hammer.svg'
 import smallBag from '../../../../assets/icons/smallBag.svg'
 import entP from '../../../../assets/icons/entP.svg'
-import RatingsComp, { type Rating } from "./ratingsComp";
-import ProfilePic from '../../../../assets/images/profilePic.png'
+import RatingsComp from "./ratingsComp";
+
 
 import { useAutoScroll } from "../../../../hooks/useAutoScroll";
+import { tabSlides } from "../utils/utils";
 
 
 
@@ -34,95 +35,10 @@ const tabs: Tabs[] = [
 ]
 
 
-const tabSlides: Rating[] = [
-  {
-    title: "Tradie/Freelancer",
-    subtitle: "Kitchen attachments installation",
-    image: ProfilePic,
-    rating: 5,
-    price: 120,
-  },
-  {
-    title: "Tradie/Freelancer",
-    subtitle: "Patio Renovation – Tracked milestones and site updates",
-    image: ProfilePic,
-    rating: 5,
-    price: 120,
-  },
-  {
-    title: "Client",
-    subtitle: "Looking for kitchen fittings jhijhihfioj iofjaio aifj weafo afffae aefef ioj",
-    image: ProfilePic,
-    rating: 4.5,
-    price: 100,
-  },
-  {
-    title: "Client",
-    subtitle: "Small bathroom rework",
-    image: ProfilePic,
-    rating: 4.8,
-    price: 130,
-  },
-  {
-    title: "Enterprise",
-    subtitle: "Bulk interior refurbishing",
-    image: ProfilePic,
-    rating: 5,
-    price: 500,
-  },
-  {
-    title: "Enterprise",
-    subtitle: "Office floor installation",
-    image: ProfilePic,
-    rating: 4.9,
-    price: 600,
-  },
-  {
-    title: "Tradie/Freelancer",
-    subtitle: "Kitchen attachments installation",
-    image: ProfilePic,
-    rating: 5,
-    price: 120,
-  },
-  {
-    title: "Tradie/Freelancer",
-    subtitle: "Patio Renovation – Tracked milestones and site updates",
-    image: ProfilePic,
-    rating: 5,
-    price: 120,
-  },
-  {
-    title: "Client",
-    subtitle: "Looking for kitchen fittings jhijhihfioj iofjaio aifj weafo afffae aefef ioj",
-    image: ProfilePic,
-    rating: 4.5,
-    price: 100,
-  },
-  {
-    title: "Client",
-    subtitle: "Small bathroom rework",
-    image: ProfilePic,
-    rating: 4.8,
-    price: 130,
-  },
-  {
-    title: "Enterprise",
-    subtitle: "Bulk interior refurbishing",
-    image: ProfilePic,
-    rating: 5,
-    price: 500,
-  },
-  {
-    title: "Enterprise",
-    subtitle: "Office floor installation",
-    image: ProfilePic,
-    rating: 4.9,
-    price: 600,
-  },
-]
+
 
 export const CarouselTabs: React.FC = () => {
-  
+
   const [activeTab, setActiveTab] = useState<Tab>("Tradie");
 
   const scroll = useAutoScroll<HTMLDivElement>({
@@ -131,7 +47,7 @@ export const CarouselTabs: React.FC = () => {
     pauseOnHover: true,
   });
 
-  
+
 
   return (
     <section className="max-w-6xl w-full px-4 py-12 text-center">
@@ -158,7 +74,7 @@ export const CarouselTabs: React.FC = () => {
       </div>
 
       <div className="relative  hide-scrollbar">
-       
+
 
         <div className="overflow-x-scroll hide-scroll flex " ref={scroll}>
           <div

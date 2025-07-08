@@ -69,8 +69,8 @@ export default function FAQSection() {
           <ContactUsCard />
         </div>
 
-        <div className="md:w-1/2 flex-center flex-col w-full">
-          <div className="flex items-center w-[80%] justify-between mb-4 max-w-[300px]">
+        <div className="md:w-[60%] flex-center flex-col w-full">
+          <div className="flex items-center w-[80%] justify-between mb-4 max-w-[320px]">
             <span className="text-lg flex-center gap-3  font-semibold ">{currentTab}
               <span className="flex gap-2">
                 {
@@ -92,7 +92,7 @@ export default function FAQSection() {
 
           <div className="grid grid-cols-1 items-center justify-center  gap-4">
             {currentFAQs.map((faq, index) => (
-              <div key={index} className="bg-secondary-blue/30 text-black p-4 rounded shadow w-[270px]">
+              <div key={index} className="bg-secondary-blue/30 text-black p-4 rounded shadow w-[300px]">
                 <div
                   className="flex items-center justify-between cursor-pointer"
                   onClick={() => toggleExpand(index)}

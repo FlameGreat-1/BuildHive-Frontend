@@ -22,7 +22,8 @@ const NavBar = () => {
 
 
     return (
-        <div className="w-full flex-btw px-8 py-2 my-2  bg-light-white mx-8 rounded-[20px] relative lg:gap-[20%] max-w-[1200px]">
+        <div className="w-full flex-btw px-8  my-2  sm:bg-light-white mx-8 rounded-[20px] relative z-10 lg:gap-[20%] max-w-[1200px]"
+        onClick={()=>showMenu&&setShowMenu(false)}>
             <Link to={'/'}>
                 <img src={buildHiveIcon} alt="BuildHive" className="w-[4rem]" />
             </Link>
@@ -32,7 +33,10 @@ const NavBar = () => {
                     <div className="bg-light-white md:bg-transparent md:flex-row w-full py-8 sm:py-0 rounded-b-md flex-col flex-center sm:justify-between">
                         <ul className="list-none font-sans  flex md:flex-row flex-col gap-6 w-full flex-even" >
                             {links.map((link, index) =>
-                            (<li key={index}><NavLink className="text-primary-purple" to={link.link}>{link.page.toUpperCase()}</NavLink></li>
+                            (<li key={index}><NavLink               className="text-primary-purple" 
+                                to={link.link}
+                                onClick={()=>setShowMenu(false)}
+                                >{link.page.toUpperCase()}</NavLink></li>
                             )
                             )
                             }
@@ -40,7 +44,7 @@ const NavBar = () => {
                         <hr className={`w-[80%] my-4 md:hidden`} />
                         <PurpleBtn text={"Get Started"} classes="overflow-visible" />
                     </div>
-                    
+
                 </div>
                 {/* TOGGLE MENU BUTTONS */}
                 <div className="flex md:hidden justify-self-end ">
