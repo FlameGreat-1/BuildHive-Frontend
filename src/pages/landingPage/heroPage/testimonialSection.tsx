@@ -28,9 +28,9 @@ const TestimonialSection = () => {
 
     // const scrollRef = useRef<HTMLDivElement>(null)
     const scrollRef = useAutoScroll<HTMLDivElement>({
-        speed: 1,
+        speed: 2,
         direction: 'right',
-        pauseOnHover: true
+        pauseOnHover: false
     })
 
     // const handlePrev = () => {
