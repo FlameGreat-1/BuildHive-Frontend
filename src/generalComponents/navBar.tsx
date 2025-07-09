@@ -46,7 +46,7 @@ const NavBar = () => {
                                 if ((link.page === 'features' || link.page === 'faq')) {
                                     return (
                                         <li key={index}>
-                                            <NavLink
+                                            <Link
                                                 className="text-primary-purple"
                                                 to={link.link === '/' ? '/' : '/'}
                                                 onClick={e => {
@@ -62,7 +62,7 @@ const NavBar = () => {
                                                 }}
                                             >
                                                 {link.page.toUpperCase()}
-                                            </NavLink>
+                                            </Link>
                                         </li>
                                     );
                                 }

@@ -1,4 +1,3 @@
-
 import FourthSection from "./fourthSection"
 import HeroSection from "./components/heroSection"
 import SecondSection from "./secondSection"
@@ -9,8 +8,13 @@ import CtaComp from "./components/ctaComp"
 import Footer from "../../../generalComponents/footer"
 import TestimonialSection from "./testimonialSection"
 import FAQSection from "./components/FAQSection"
+import useScrollToTop from "../../../hooks/useScrollToT"
+
+
+
 
 const Hero = () => {
+  useScrollToTop()
 
   return (
     <div className="w-full">
@@ -29,3 +33,4 @@ const Hero = () => {
 }
 
 export default Hero
+
