@@ -46,7 +46,7 @@ const OnboardingPage = () => {
                         <InfoSection
                             step={3}
                             heading="Smart Features You'll Love"
-                            image={onboarding4}
+                            image={onboarding3}
                             title="AI Quoting, JobCast CRM."
                             subtitle="Automate your business, broadcast availability, and never lose track of a client."
                         />
@@ -57,7 +57,7 @@ const OnboardingPage = () => {
                         <InfoSection
                             step={4}
                             heading="Stay in Control"
-                            image={onboarding3}
+                            image={onboarding4}
                             title="From Start to Payment"
                             subtitle="Post jobs, assign tasks, send invoices all in one app."
                         />
