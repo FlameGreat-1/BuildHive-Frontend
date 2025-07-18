@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import buildHiveIcon from "../../assets/icons/buildHive.svg";
+import buildHiveIcon from "../../../assets/icons/buildHive.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle, faFacebook, faLinkedin } from "@fortawesome/free-brands-svg-icons";
