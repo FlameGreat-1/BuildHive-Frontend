@@ -19,10 +19,10 @@ const InfoSection = ({heading,image,title,subtitle,step}:props) => {
     exit={{opacity:0, x:-100}}
     transition={{duration:1}}
     >
-        <p className={gradientToRPurple + "font-bold bg-clip-text text-transparent"}>{heading}</p>
+        <p className={gradientToRPurple + "font-bold bg-clip-text text-transparent md:text-2xl"}>{heading}</p>
         <img src={image} alt={heading} />
-        <p className="text-black font-bold text-lg">{title}</p>
-        <p className="text-black text-sm">{subtitle}</p>
+        <p className="text-black font-bold text-lg md:text-3xl">{title}</p>
+        <p className="text-black text-sm md:text-lg">{subtitle}</p>
     </motion.div>
   )
 }
