@@ -32,8 +32,8 @@ const SignIn: React.FC = () => {
     <div className="min-h-screen w-screen flex items-center justify-center bg-light-white">
       <div className="w-full min-h-full max-w-5xl bg-white flex-center flex-col sm:flex-row  overflow-hidden">
         {/* Left Side - Image & Overlay */}
-        [        <div className="relative md:w-1/2 w-full h-[250px] sm:min-h-[700px] flex items-end md:items-center justify-center bg-gray-200 p-4">
-          ]          <img
+        <div className="relative md:w-1/2 w-full h-[250px] sm:min-h-[700px] flex items-end md:items-center justify-center bg-gray-200 p-4">
+          <img
             src={workers}
             alt="Construction workers"
             className="absolute inset-0 w-full h-full object-cover"
