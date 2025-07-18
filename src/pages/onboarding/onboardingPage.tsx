@@ -8,13 +8,16 @@ import ProgressBar from "./components/progressBar"
 import ButtonRound from "./components/buttonRound"
 import PurpleBtnSquare from "../../generalComponents/purpleBtnSquare"
 import { AnimatePresence } from "framer-motion"
+import { useNavigate } from "react-router-dom"
 
 const OnboardingPage = () => {
 
     const [currentCount, setCurrentCount] = useState(1)
-    const handleNext = (skip?:boolean) => { if (currentCount < 4) setCurrentCount(currentCount + 1) 
-        if(skip)setCurrentCount(4)
+    const handleNext = (skip?: boolean) => {
+        if (currentCount < 4) setCurrentCount(currentCount + 1)
+        if (skip) setCurrentCount(4)
     }
+    const navigate = useNavigate()
 
     return (
         <AnimatePresence mode="wait">
@@ -72,13 +75,14 @@ const OnboardingPage = () => {
                         totalNumber={4}
                         currentNumber={currentCount} />
                     <div className={` w-full max-w-[200px] mt-4  ${currentCount === 4 ? 'hidden' : 'flex-btw'} `}>
-                        <p 
-                        onClick={()=>{handleNext(true)}}
-                        className="text-dark-black font-semibold"
+                        <p
+                            onClick={() => { handleNext(true) }}
+                            className="text-dark-black font-semibold"
                         >Skip</p>
                         <ButtonRound click={() => { handleNext() }} />
                     </div>
                     <PurpleBtnSquare
+                        click={() => { navigate('/sign-in') }}
                         classes={`${currentCount !== 4 && 'hidden'} `}
                         upperCase={'false'}
                         text="Get Started"

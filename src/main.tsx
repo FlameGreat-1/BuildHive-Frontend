@@ -8,6 +8,7 @@ import Hero from './pages/landingPage/heroPage/hero.tsx';
 import About from './pages/landingPage/about/about.tsx';
 import Pricing from './pages/landingPage/pricing/pricing.tsx';
 import OnboardingPage from './pages/onboarding/onboardingPage.tsx';
+import SignIn from './pages/onboarding/signUp/LoginPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path:'/onboarding',
     element:<OnboardingPage/>
+  },
+  {
+    path:'/sign-in',
+    element:<SignIn/>
   }
 ])
 
