@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import buildHiveIcon from "../../../assets/icons/buildHive.svg";
+import workers from "../../../assets/images/yellowWorkers.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle, faFacebook, faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -30,7 +31,7 @@ const SignIn: React.FC = () => {
         {/* Left Side - Image & Overlay */}
         <div className="relative md:w-1/2 w-full h-[350px] md:h-auto flex items-center justify-center bg-gray-200">
           <img
-            src="/assets/images/construction-workers.jpg"
+            src={workers}
             alt="Construction workers"
             className="absolute inset-0 w-full h-full object-cover"
           />
