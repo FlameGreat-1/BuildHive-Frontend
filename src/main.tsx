@@ -7,6 +7,7 @@ import LandingPage from './pages/landingPage/index.tsx';
 import Hero from './pages/landingPage/heroPage/hero.tsx';
 import About from './pages/landingPage/about/about.tsx';
 import Pricing from './pages/landingPage/pricing/pricing.tsx';
+import OnboardingPage from './pages/onboarding/onboardingPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,6 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        // path: '/landing',
         index: true,
         element: <Hero/>,
       },
@@ -28,12 +28,12 @@ const router = createBrowserRouter([
         path: '/pricing',
         element: <Pricing/>,
       },
-      // {
-      //   path: '/pricing',
-      //   element: <Pricing/>,
-      // },
     ],
   },
+  {
+    path:'/onboarding',
+    element:<OnboardingPage/>
+  }
 ])
 
 createRoot(document.getElementById('root')!).render(

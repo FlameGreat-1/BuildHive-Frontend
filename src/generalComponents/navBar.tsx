@@ -1,4 +1,4 @@
-import { NavLink, Link } from "react-router-dom"
+import { NavLink, Link, useNavigate } from "react-router-dom"
 import buildHiveIcon from '../assets/icons/buildHive.svg';
 import PurpleBtn from "./purpleBtn";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,7 +17,7 @@ const links: { link: string; page: string; scrollToId?: string }[] = [
 
 const NavBar = () => {
 
-
+    const navigate = useNavigate()
     const [showMenu, setShowMenu] = useState(false)
 
 
@@ -81,7 +81,9 @@ const NavBar = () => {
                             })}
                         </ul>
                         <hr className={`w-[80%] my-4 md:hidden`} />
-                        <PurpleBtn text={"Get Started"} classes="overflow-visible" />
+                        <PurpleBtn text={"Get Started"} classes="overflow-visible" 
+                        click={()=>navigate('/onboarding')}
+                        />
                     </div>
                 </div>
                 {/* TOGGLE MENU BUTTONS */}
