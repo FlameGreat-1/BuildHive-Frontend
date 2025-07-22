@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 import ForgotPass1 from "./components/forgotPass1"
 import ConfirmEmail from "./components/confirmEmail"
 import SetNewPasword from "./components/setNewPassword"
+import PasswordUpdated from "./components/passwordUpdated"
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('')
@@ -35,6 +36,9 @@ const ForgotPassword = () => {
                 }
                 {
                     steps === 2 && <SetNewPasword nextSteps={nextStep} />
+                }
+                {
+                    steps === 3 && <PasswordUpdated />
                 }
             </AnimatePresence>
 
