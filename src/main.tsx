@@ -9,6 +9,7 @@ import About from './pages/landingPage/about/about.tsx';
 import Pricing from './pages/landingPage/pricing/pricing.tsx';
 import OnboardingPage from './pages/onboarding/onboardingPage.tsx';
 import SignIn from './pages/onboarding/signUp/LoginPage.tsx';
+import ForgotPassword from './pages/forgotPassword/forgotPassword.tsx';
 
 const router = createBrowserRouter([
   {
@@ -38,7 +39,11 @@ const router = createBrowserRouter([
   {
     path:'/sign-in',
     element:<SignIn/>
-  }
+  },
+  {
+    path:'/forgot-password',
+    element:<ForgotPassword/>
+  },
 ])
 
 createRoot(document.getElementById('root')!).render(

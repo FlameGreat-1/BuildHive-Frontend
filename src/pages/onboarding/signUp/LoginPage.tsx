@@ -24,7 +24,7 @@ const SignIn: React.FC = () => {
         setSignInForm({...signInForm, rememerMe:checked})
         return
       }
-      setSignInForm({ ...signInForm, [name]: value })
+      setSignInForm({ ...signInForm, [name]: value.trim() })
     }
   }
   const signIn = () => {
@@ -107,8 +107,8 @@ const SignIn: React.FC = () => {
               <label
                 htmlFor="password"
                 className=" absolute bg-light-white text-primary-purple  peer-placeholder-shown:top-3 peer-focus-within:top-[-12px] top-[-12px] peer-focus:text-primary-purple transition-all peer-focus:text-xs peer-placeholder-shown:text-slate-400 left-8 peer-focus:bg-light-white px-1 z-1 pointer-events-none">Password</label>
-
             </div>
+            
             <div className="flex justify-between">
               <span className="flex-center gap-1">
                 <input
@@ -122,9 +122,9 @@ const SignIn: React.FC = () => {
                   htmlFor="rememerMe"
                   className="text-black text-sm sm:text-base">Remember me</label>
               </span>
-              <a href="#" className=" bottom-[-22px] text-right text-primary-purple text-sm">
+              <Link to="/forgot-password" className=" bottom-[-22px] text-right text-primary-purple text-sm">
                 Forgot password?
-              </a>
+              </Link>
             </div>
             <PurpleBtn text="Sign In" classes={`  w-full text-center mt-4 self-center`} click={() => signIn()} />
           </form>
