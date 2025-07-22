@@ -49,15 +49,15 @@ const SignIn: React.FC = () => {
             className="absolute inset-0 w-full h-full object-cover pointer-events-none"
           />
           <div className="absolute inset-0 rounded-3xl flex flex-col items-center justify-end sm:justify-center p-4">
-            <div className="flex-col flex-center w-fit mb-4 bg-gray-600/20 glassmorphic rounded-md p-4 gap-2">
-              <p className="text-white text-3xl md:text-3xl font-bold text-left">Hey, Welcome Back!</p>
+            <div className="flex-col flex-center sm:w-[300px] md:w-fit mb-4 bg-gray-600/20 glassmorphic rounded-md p-4 gap-2">
+              <p className="text-white text-3xl md:text-3xl font-bold sm:hidden text-left">Hey, Welcome Back!</p>
               <div className=" flex-col gap-2 hidden sm:flex">
                 <p className="text-white text-2xl md:text-3xl font-bold text-center">Hey, There!</p>
                 <p className="text-white font-light md:font-semibold text-xl md:text-2xl text-center">Welcome Back</p>
                 <p className="text-white font-light md:font-regular text-lg text-center">You are just one step away from your jobs</p>
                 <div className={`sm:flex hidden justify-center w-[300px] mt-4 items-center flex-col gap-2`}>
                   <p className="text-gray-800 font-regular md:font-regular text-base md:text-lg text-center mb-2">Don't have an account?</p>
-                  <PurpleBtn text="Sign Up" upperCase="false" classes="min-w-[300px] text-center" />
+                  <PurpleBtn text="Sign Up" upperCase="false" classes="min-w-[250px] text-center" />
                 </div>
               </div>
             </div>
@@ -120,7 +120,7 @@ const SignIn: React.FC = () => {
                   className="" />
                 <label
                   htmlFor="rememerMe"
-                  className="text-black text-sm sm:text-base">Keep me logged in</label>
+                  className="text-black text-sm sm:text-base">Remember me</label>
               </span>
               <a href="#" className=" bottom-[-22px] text-right text-primary-purple text-sm">
                 Forgot password?
