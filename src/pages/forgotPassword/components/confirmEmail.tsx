@@ -19,7 +19,7 @@ const ConfirmEmail = ({ email, nextSteps }: props) => {
         try {
             const otpValue = otp.join("")
             if (!otpValue) throw new Error("");
-            console.log(otpValue)
+            // console.log(otpValue)
             if (otpValue.split('').length < 5) throw new Error("")
             nextSteps()
         } catch {
@@ -52,7 +52,7 @@ const ConfirmEmail = ({ email, nextSteps }: props) => {
             className="w-full flex-col flex-center min-w-[300px] max-w-[500px] p-4 gap-4"
         >
             <p className="text-xl text-md:text-2xl lg:text-3xl font-semibold">Email Confirmation</p>
-            <img src={image} alt="Forgot Password" className='w-[80%]' />
+            <img src={image} alt="Forgot Password" className='min-w-[clamp(200px,100%,400px]' />
             <p className="text-slate-600 lg:text-xl text-center">Verification code sent to <span className='text-primary-purple'>{email}</span></p>
             <OtpInput length={5} value={otp} onChange={setOtp} error={error} />
             {error &&

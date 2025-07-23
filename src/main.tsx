@@ -8,8 +8,15 @@ import Hero from './pages/landingPage/heroPage/hero.tsx';
 import About from './pages/landingPage/about/about.tsx';
 import Pricing from './pages/landingPage/pricing/pricing.tsx';
 import OnboardingPage from './pages/onboarding/onboardingPage.tsx';
-import SignIn from './pages/onboarding/signUp/LoginPage.tsx';
+import SignIn from './pages/onboarding/signInPage/LoginPage.tsx';
 import ForgotPassword from './pages/forgotPassword/forgotPassword.tsx';
+import SignUp from './pages/signUp/signUp.tsx';
+import AuthPage from './pages/auth/auth.tsx';
+import { clientRoutes } from './routes/clientRoutes.tsx';
+import { enterpriseRoutes } from './routes/enterpriseRoutes.tsx';
+import { tradieRoutes } from './routes/tradieRoutes.tsx';
+
+
 
 const router = createBrowserRouter([
   {
@@ -24,26 +31,39 @@ const router = createBrowserRouter([
       },
       {
         index: true,
-        element: <Hero/>,
+        element: <Hero />,
       },
       {
         path: '/pricing',
-        element: <Pricing/>,
+        element: <Pricing />,
       },
     ],
   },
   {
-    path:'/onboarding',
-    element:<OnboardingPage/>
+    path: '/onboarding',
+    element: <OnboardingPage />
   },
   {
-    path:'/sign-in',
-    element:<SignIn/>
+    path: '/forgot-password',
+    element: <ForgotPassword />
   },
   {
-    path:'/forgot-password',
-    element:<ForgotPassword/>
+    path: '/auth',
+    element: <AuthPage />,
+    children: [
+      {
+      path: 'sign-in',
+      element: <SignIn />
+      },
+      {
+        path: 'sign-up',
+        element: <SignUp />
+      },
+    ]
   },
+  ...clientRoutes,
+  ...enterpriseRoutes,
+  ...tradieRoutes,
 ])
 
 createRoot(document.getElementById('root')!).render(

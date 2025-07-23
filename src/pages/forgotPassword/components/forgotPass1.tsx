@@ -43,7 +43,7 @@ const ForgotPass1 = ({ nextSteps, setParentEmail }: props) => {
             className="w-full flex-col flex-center min-w-[300px] max-w-[500px] p-4 gap-4"
         >
             <p className="text-xl text-md:text-2xl lg:text-3xl font-semibold">Forgot password?</p>
-            <img src={image} alt="Forgot Password" className='w-[80%]' />
+            <img src={image} alt="Forgot Password" className='min-w-[clamp(200px,100%,400px]' />
             <p className="text-slate-600 lg:text-xl text-center">Please enter your email address to receive a confirmation code to set a new password.</p>
             <CustomInput
                 name='email'

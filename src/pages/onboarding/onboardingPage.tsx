@@ -82,7 +82,7 @@ const OnboardingPage = () => {
                         <ButtonRound click={() => { handleNext() }} />
                     </div>
                     <PurpleBtnSquare
-                        click={() => { navigate('/sign-in') }}
+                        click={() => { navigate('/auth/sign-in') }}
                         classes={`${currentCount !== 4 && 'hidden'} `}
                         upperCase={'false'}
                         text="Get Started"

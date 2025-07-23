@@ -15,8 +15,8 @@ const PasswordUpdated = () => {
         >
         <p className="text-xl text-md:text-2xl lg:text-3xl font-semibold">Password updated</p>
         <p className="text-slate-600 lg:text-xl text-center">You're all set to go.</p>
-        <img src={image} alt="Forgot Password" className='w-[80%]' />
-        <PurpleBtn text='Back to Sign In' classes='w-full text-center max-w-[300px]' upperCase='false' click={() => navigate('/sign-in')} />
+        <img src={image} alt="Forgot Password" className='min-w-[clamp(200px,100%,400px]' />
+        <PurpleBtn text='Back to Sign In' classes='w-full text-center max-w-[300px]' upperCase='false' click={() => navigate('/auth/sign-in')} />
     </motion.div>
   )
 }

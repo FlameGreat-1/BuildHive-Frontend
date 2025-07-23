@@ -26,7 +26,7 @@ export const validateConfirmPassword = (
 
 export const validateUsername = (username: string): true | string => {
   if (!username) return "Username is required";
-  if (username.length < 3) return "Username must be at least 3 characters long";
+  if (username.length < 8) return "Username must be at least 8 characters long";
   return true;
 };
 

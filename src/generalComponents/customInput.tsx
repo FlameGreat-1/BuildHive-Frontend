@@ -10,9 +10,10 @@ interface props {
     handleChange: (e:React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
     classes?:string;
+    placeholderClasses?:string;
 }
 
-const CustomInput = ({ name, type, icon, handleChange, placeholder,value,classes }: props) => {
+const CustomInput = ({ name, type, icon, handleChange, placeholder,value,classes,placeholderClasses }: props) => {
 
     const [showPassword, setShowPassword] = useState(false)
     const isPassword = type === 'password'
@@ -44,7 +45,7 @@ const CustomInput = ({ name, type, icon, handleChange, placeholder,value,classes
             }
             <label
                 htmlFor={name}
-                className=" absolute bg-light-white text-primary-purple  peer-placeholder-shown:top-3 peer-focus-within:top-[-12px] top-[-12px] peer-focus:text-primary-purple transition-all peer-focus:text-xs peer-placeholder-shown:text-slate-400 left-8 peer-focus:bg-light-white px-1 z-1 pointer-events-none">{placeholder}</label>
+                className={placeholderClasses +" absolute bg-light-white text-primary-purple  peer-placeholder-shown:top-3 peer-focus-within:top-[-12px] top-[-12px] peer-focus:text-primary-purple transition-all peer-focus:text-xs text-xs peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-400 left-8 peer-focus:bg-light-white px-1 z-1 pointer-events-none"}>{placeholder}</label>
         </div>
     )
 }
