@@ -16,7 +16,7 @@ const SignUpComplete = () => {
         <p className="text-xl text-md:text-2xl lg:text-3xl font-semibold">You did it, you are in.</p>
         <p className="text-slate-600 lg:text-xl text-center">Welcome John</p>
         <img src={image} alt="You did it!" className='min-w-[clamp(200px,100%,400px]' />
-        <PurpleBtn text='Set Up My Account' classes='w-full text-center max-w-[300px]' upperCase='false' click={() => navigate('/client/account-setup')} />
+        <PurpleBtn text='Set Up My Account' classes='w-full text-center max-w-[300px]' upperCase='false' click={() => navigate('/app/client/account-setup')} />
     </motion.div>
   )
 }

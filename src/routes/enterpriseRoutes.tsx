@@ -5,7 +5,7 @@ const role = 'enterprise'
 
 export const enterpriseRoutes = [
     {
-        path: '/enterprise',
+        path: 'enterprise',
         element: <ProtectedRoutes
             isAuthenticated={isAuthenticated}
             userRole={role}

@@ -5,7 +5,7 @@ const role = 'tradie'
 
 export const tradieRoutes = [
     {
-        path: '/tradie',
+        path: 'tradie',
         element: <ProtectedRoutes
             isAuthenticated={isAuthenticated}
             userRole={role}

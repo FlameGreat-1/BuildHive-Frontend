@@ -13,7 +13,7 @@ interface props {
 const ConfirmEmailSignUp = ({ email, nextSteps }: props) => {
 
     const [timer, setTimer] = useState(30)
-    const [otp, setOtp] = useState(Array(5).fill(""))
+    const [otp, setOtp] = useState(Array(6).fill(""))
     const [error, setError] = useState(false)
     const [errorMsg, setErrorMsg] = useState('')
     const handleSubmit = () => {
@@ -37,7 +37,7 @@ const ConfirmEmailSignUp = ({ email, nextSteps }: props) => {
     const handleResend = ()=>{
         setTimer(30);
         setError(false);
-        setOtp(Array(5).fill(""))
+        setOtp(Array(6).fill(""))
     }
 
     useEffect(() => {
@@ -61,7 +61,7 @@ const ConfirmEmailSignUp = ({ email, nextSteps }: props) => {
             <p className="text-xl text-md:text-2xl lg:text-3xl font-semibold">Email Confirmation</p>
             <img src={image} alt="Forgot Password" className='min-w-[clamp(200px,100%,400px)]' />
             <p className="text-slate-600 lg:text-xl text-center">We’ve sent a 6-digit code to  <span className='text-primary-purple'>{email}</span> enter it below to confirm your account and keep it secure.</p>
-            <OtpInput length={5} value={otp} onChange={setOtp} error={error} />
+            <OtpInput length={6} value={otp} onChange={setOtp} error={error} />
             {error &&
                 <p className="text-sm text-red-500">{errorMsg}</p>}
                 {timer > 0 ? <p className="text-base md:text-lg text-slate-400">Send code again in 00:{timer}</p> : (

@@ -6,14 +6,15 @@ interface props {
     name: string;
     type: string;
     value:string | number | readonly string[];
-    icon: IconDefinition;
+    icon?: IconDefinition;
     handleChange: (e:React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
     classes?:string;
     placeholderClasses?:string;
+    inputClasses?:string;
 }
 
-const CustomInput = ({ name, type, icon, handleChange, placeholder,value,classes,placeholderClasses }: props) => {
+const CustomInput = ({ name, type, icon, handleChange, placeholder,value,classes,placeholderClasses,inputClasses }: props) => {
 
     const [showPassword, setShowPassword] = useState(false)
     const isPassword = type === 'password'
@@ -21,7 +22,7 @@ const CustomInput = ({ name, type, icon, handleChange, placeholder,value,classes
 
     return (
         <div className={`${classes&&classes}  relative w-full`}>
-            <FontAwesomeIcon icon={icon} className="absolute left-3 top-1/2 -translate-y-1/2 text-primary-purple" />
+            {icon && <FontAwesomeIcon icon={icon} className="absolute left-3 top-1/2 -translate-y-1/2 text-primary-purple" />}
             <input
                 onChange={handleChange}
                 value={value}
@@ -31,7 +32,7 @@ const CustomInput = ({ name, type, icon, handleChange, placeholder,value,classes
                 required
                 type={inputType}
                 placeholder=" "
-                className={` w-full transition-all pl-10 pr-10 py-3 peer bg-light-white  border-gray-800 border-[1px] rounded-full text-black focus:border-primary-purple focus:outline-none duration-[1s] bg-transparent relative`}
+                className={`${inputClasses} w-full transition-all pl-10 pr-10 py-3 peer bg-light-white  border-gray-800 border-[1px] rounded-full text-black focus:border-primary-purple focus:outline-none duration-[1s] bg-transparent relative`}
             />
             {
                 type === 'password' && (

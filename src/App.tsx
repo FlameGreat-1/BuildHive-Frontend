@@ -1,8 +1,10 @@
 import { Outlet, /*Link*/ } from 'react-router-dom'
+import 'leaflet/dist/leaflet.css'
+
 
 export default function App() {
   return (
-    <div className='w-screen overflow-x-none h-[100dvh] bg-light-white text-purple-bg'>
+    <div >
       <Outlet />
     </div>
   )

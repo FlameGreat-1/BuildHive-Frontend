@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-// import App from './App.tsx';
+import App from './App.tsx';
 import LandingPage from './pages/landingPage/index.tsx';
 import Hero from './pages/landingPage/heroPage/hero.tsx';
 import About from './pages/landingPage/about/about.tsx';
@@ -61,9 +61,15 @@ const router = createBrowserRouter([
       },
     ]
   },
-  ...clientRoutes,
-  ...enterpriseRoutes,
-  ...tradieRoutes,
+  {
+    path:"/app",
+    element:<App/>,
+    children:[
+      ...clientRoutes,
+      ...enterpriseRoutes,
+      ...tradieRoutes,
+    ]
+  }
 ])
 
 createRoot(document.getElementById('root')!).render(

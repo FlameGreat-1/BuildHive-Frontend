@@ -6,7 +6,7 @@ const role = 'client'
 
 export const clientRoutes = [
     {
-        path: '/client',
+        path: 'client',
         element: <ProtectedRoutes
             isAuthenticated={isAuthenticated}
             userRole={role}
