@@ -1,9 +1,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// import LocationPicker from "../../generalComponents/LocationPicker";
-// import MultiSelect from "../../generalComponents/MultiSelect";
-// import FirstPage from "./components/FirstPage";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -12,6 +9,7 @@ import CustomInput from "@/generalComponents/customInput";
 import PurpleBtn from "@/generalComponents/purpleBtn";
 import { Radio } from "@/generalComponents/CustomCheckbox";
 import MapWithSearch from "@/generalComponents/MapWithSearch";
+import bgImage from '@/assets/images/accountSetupBg.webp'
 
 interface Location {
   lat: number;
@@ -32,21 +30,21 @@ const tagOptions: Option[] = [
 ];
 
 const radios = [{
-  name:'frequency',
-  id:'occassionally',
-  value:'Occassionally',
-  label:'Occassionally',
-},{
-  name:'frequency',
-  id:'oneTime',
-  value:'One time',
-  label:'One Time',
+  name: 'frequency',
+  id: 'occassionally',
+  value: 'Occassionally',
+  label: 'Occassionally',
+}, {
+  name: 'frequency',
+  id: 'oneTime',
+  value: 'One time',
+  label: 'One Time',
 },
 {
-  name:'frequency',
-  id:'Ongoing',
-  value:'Ongoing',
-  label:'Ongoing',
+  name: 'frequency',
+  id: 'Ongoing',
+  value: 'Ongoing',
+  label: 'Ongoing',
 },
 ]
 
@@ -54,7 +52,7 @@ export default function ClientAccountSetup() {
   const [step, setStep] = useState(0);
   const [locations, setLocations] = useState<Location[]>([]);
   const [selectedTags, setSelectedTags] = useState<Option[]>([]);
-  const [form, setForm] = useState({ businessName: '',  frequency: '' })
+  const [form, setForm] = useState({ businessName: '', frequency: '' })
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, } = e.target
     // if(name==='frequency'){
@@ -84,11 +82,11 @@ export default function ClientAccountSetup() {
   // };
 
   return (
-    <div className="w-screen bg-light-white min-h-screen relative mx-auto space-y-6 text-black flex justify-center items-start pt-12">'
+    <div className="w-screen bg-light-white min-h-screen relative mx-auto space-y-6 text-black flex justify-center items-start pt-12">
       <div
         className="flex-btw items-center w-full p-2 text-base md:text-lg max-w-[1200px] absolute top-0 z-10">
         <div
-          onClick={() => {prev() }}
+          onClick={() => { prev() }}
           className={step === 0 ? 'invisible pointer-events-none ' : "flex-center text-black p-2 gap-2"}>
           <FontAwesomeIcon icon={faArrowLeft} />
           <p className="font-semibold">Go Back</p>
@@ -131,13 +129,13 @@ export default function ClientAccountSetup() {
             </div>
             <div className="flex flex-wrap gap-2 ">
               {
-                radios.map((radio,index)=>(
-                  <Radio 
-                  {...radio}
-                  key={index}
-                  onChange={handleChange}
-                  checked={form.frequency === radio.value?true:false}
-                  labelClass={form.frequency === radio.value ? 'text-primary-purple ':''}
+                radios.map((radio, index) => (
+                  <Radio
+                    {...radio}
+                    key={index}
+                    onChange={handleChange}
+                    checked={form.frequency === radio.value ? true : false}
+                    labelClass={form.frequency === radio.value ? 'text-primary-purple ' : ''}
                   />
                 ))
               }
@@ -163,18 +161,46 @@ export default function ClientAccountSetup() {
               <p className="text-xl sm:text-2xl md:text-3xl text-center "> Add Your Project Locations</p>
               <p className="text-sm mt-2 md:mt-4 sm:text-base md:text-xl text-center">Select the places where you'll need work done. You can add multiple locations.</p>
               <MapWithSearch
-              locations={locations}
-              setLocations={setLocations}
+                locations={locations}
+                setLocations={setLocations}
               />
-            {/* <LocationPicker
-              locations={locations}
-              setLocations={setLocations}
-            /> */}
-            <div className="flex-center gap-4 flex-col  justify-between mt-8">
-              <PurpleBtn text="Continue" upperCase="false" classes="w-full max-w-[300px] text-center" click={next} />
-              <p className="text-gray-400 md:text-xl">Skip for now</p>
-              
+              <div className="flex-center gap-4 flex-col  justify-between mt-8">
+                <PurpleBtn text="Continue" upperCase="false" classes="w-full max-w-[300px] text-center" click={next} />
+                <p className="text-gray-400 md:text-xl">Skip for now</p>
+
+              </div>
             </div>
+          </motion.div>
+        )}
+        {step === 2 && (
+          <motion.div
+            key="step3"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.4 }}
+            className="relative w-full h-screen max-h-[1000px] flex-center top-[-5rem]"
+          >
+            <img
+              src={bgImage}
+              alt="Account setup image"
+              className="absolute h-full w-full object-cover"
+            />
+            <div className=" w-full p-4 glassmorphic flex-center rounded-[20px] max-w-[90%] sm:max-w-[400px]">
+              <div className=" w-full max-w-[400px] flex-center flex-col gap-4 p-4">
+                <div className="flex-center flex-col gap-4 text-center ">
+                  <p className=" text-xl sm:text-2xl md:text-3">Welcome to Build Hive!</p>
+                  <p className="text-base md:text-lg">You're ready to post jobs and manage your projects with ease.</p>
+                </div>
+                <div className="flex-center flex-col gap-4 ">
+                  <PurpleBtn
+                    text='Post a Job Now'
+                    upperCase='false'
+                    classes="min-w-200px w-full max-w-[300px]"
+                  />
+                  <button className="text-primary-purple rounded-[20px] bg-light-white w-full min-w-[200px] max-w-[300px] "> Go to Dashboard →</button>
+                </div>
+              </div>
             </div>
           </motion.div>
         )}
