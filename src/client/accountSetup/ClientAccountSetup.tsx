@@ -3,21 +3,21 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CustomSelect from "@/generalComponents/CustomSelect";
 import CustomInput from "@/generalComponents/customInput";
 import PurpleBtn from "@/generalComponents/purpleBtn";
 import { Radio } from "@/generalComponents/CustomCheckbox";
 import MapWithSearch from "@/generalComponents/MapWithSearch";
-import bgImage from '@/assets/images/accountSetupBg.webp'
+// import bgImage from '@/assets/images/accountSetupBg.webp'
 
-interface Location {
+export interface Location {
   lat: number;
   lon: number;
   name: string;
 }
 
-interface Option {
+export interface Option {
   label: string;
   value: string;
 }
@@ -49,37 +49,22 @@ const radios = [{
 ]
 
 export default function ClientAccountSetup() {
+  const navigate = useNavigate()
   const [step, setStep] = useState(0);
   const [locations, setLocations] = useState<Location[]>([]);
   const [selectedTags, setSelectedTags] = useState<Option[]>([]);
   const [form, setForm] = useState({ businessName: '', frequency: '' })
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, } = e.target
-    // if(name==='frequency'){
-    //   setForm({...form,[name]:value})
-    // }
-    // const{checked}
     setForm({ ...form, [name]: value })
     console.log({ ...form, [name]: value })
   }
-  // const handleSelectJob = (options:Option[])=>{
-  //   setForm({...form, jobTypes:[...options]})
-  // }
-  const next = () => setStep((s) => s + 1);
+  const next = () => {
+    if (step===1){navigate('complete');return}
+    setStep((s) => s + 1);}
   const prev = () => setStep((s) => s - 1);
 
-  // const handleSubmit = async () => {
-  //   const payload = {
-  //     tags: selectedTags,
-  //     locations: locations,
-  //   };
-  //   console.log("Submitting:", payload);
-  //   // await fetch("/api/submit", {
-  //   //   method: "POST",
-  //   //   headers: { "Content-Type": "application/json" },
-  //   //   body: JSON.stringify(payload),
-  //   // });
-  // };
+  
 
   return (
     <div className="w-screen bg-light-white min-h-screen relative mx-auto space-y-6 text-black flex justify-center items-start pt-12">
@@ -117,8 +102,8 @@ export default function ClientAccountSetup() {
                   placeholder="Business Name"
                   classes=""
                 />
-                <div className=" w-full">
-                  <p>Job types you are interested in.</p>
+                <div className=" w-full space-y-2">
+                  <p className="ml-4">Job types you are interested in.</p>
                   <CustomSelect
                     options={tagOptions}
                     value={selectedTags}
@@ -166,13 +151,15 @@ export default function ClientAccountSetup() {
               />
               <div className="flex-center gap-4 flex-col  justify-between mt-8">
                 <PurpleBtn text="Continue" upperCase="false" classes="w-full max-w-[300px] text-center" click={next} />
-                <p className="text-gray-400 md:text-xl">Skip for now</p>
+                <p
+                onClick={()=>{navigate('complete')}} 
+                className="text-gray-400 md:text-xl cursor-pointer">Skip for now</p>
 
               </div>
             </div>
           </motion.div>
         )}
-        {step === 2 && (
+        {/* {step === 2 && (
           <motion.div
             key="step3"
             initial={{ opacity: 0, x: 50 }}
@@ -203,7 +190,7 @@ export default function ClientAccountSetup() {
               </div>
             </div>
           </motion.div>
-        )}
+        )} */}
       </AnimatePresence>
     </div>
   );

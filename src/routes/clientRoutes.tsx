@@ -1,4 +1,5 @@
-import ClientAccountSetup from "../client/accountSetup/accountSetup"
+import ClientAccountSetupComplete from "@/client/accountSetup/ClientAccountSetupComplete"
+import ClientAccountSetup from "../client/accountSetup/ClientAccountSetup"
 import ProtectedRoutes from "../pages/auth/protectedRoutes"
 
 const isAuthenticated = true
@@ -14,9 +15,13 @@ export const clientRoutes = [
         />,
         children: [
             {
-                path:'account-setup',
-                element:<ClientAccountSetup/>
-            }
+                path: 'account-setup',
+                element: <ClientAccountSetup />
+            },
+            {
+                path: 'account-setup/complete',
+                element: <ClientAccountSetupComplete />
+            },
         ]
     }
 ]
