@@ -202,7 +202,13 @@ const EnterpriseAccountSetup = () => {
 
           {
             step === 1 && (
-              <div className="w-full flex flex-col gap-4">
+              <motion.div
+                key="step2"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 50 }}
+                transition={{ duration: 0.4 }}
+                className="w-full flex flex-col gap-4">
                 <div className="space-y-2">
                   <p className="text-xl sm:text-2xl md:text-3xl text-center ">Add Your Team</p>
                   <p className="text-sm mt-2 md:mt-4 sm:text-base md:text-xl text-center">Invite tradies to join your internal team. You can skip this step.</p>
@@ -246,13 +252,19 @@ const EnterpriseAccountSetup = () => {
                     onClick={() => { navigate('complete') }}
                     className="text-gray-400 md:text-xl cursor-pointer">Skip for now</p>
                 </div>
-              </div>
+              </motion.div>
             )
           }
 
           {
             step === 2 && (
-              <div className="w-full p-4 flex flex-col gap-4">
+              <motion.div
+                key="step3"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 50 }}
+                transition={{ duration: 0.4 }}
+                className="w-full p-4 flex flex-col gap-4">
                 <div className="space-y-2">
                   <p className="text-xl sm:text-2xl md:text-3xl text-center ">Customize Your Job Flow</p>
                   <p className="text-sm mt-2 md:mt-4 sm:text-base md:text-xl text-center">We'll set up your dashboard based on this.</p>
@@ -309,12 +321,18 @@ const EnterpriseAccountSetup = () => {
                   </div>
                 </div>
                 <PurpleBtn text="Continue" upperCase="false" classes="w-full max-w-[300px] self-center text-center" click={next} />
-              </div>
+              </motion.div>
             )
           }
           {
             step === 3 && (
-              <div className="min-w-[250px] max-w-[400px] w-full p-2">
+              <motion.div
+                key="step4"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 50 }}
+                transition={{ duration: 0.4 }}
+                className="min-w-[250px] max-w-[400px] w-full p-2">
                 <p className="text-xl sm:text-2xl md:text-3xl text-center ">Set Your Operating Locations</p>
                 <p className="text-sm mt-2 md:mt-4 sm:text-base md:text-xl text-center">Select one or more areas where your company accepts or assigns jobs.</p>
                 <MapWithSearch
@@ -331,7 +349,7 @@ const EnterpriseAccountSetup = () => {
                     onClick={() => { navigate('complete') }}
                     className="text-gray-400 md:text-xl cursor-pointer">Skip for now</p>
                 </div>
-              </div>
+              </motion.div>
             )
           }
         </div>
