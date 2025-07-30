@@ -1,7 +1,7 @@
 import CustomSelect from "@/generalComponents/CustomSelect";
 import { AnimatePresence, motion } from "framer-motion"
 import React, { useState } from "react";
-import type { Option } from "@/client/accountSetup/ClientAccountSetup";
+import type { Option } from "@/userRoles/client/accountSetup/ClientAccountSetup";
 import { Radio } from "@/generalComponents/CustomCheckbox";
 import FileUploader, { type UploadFile } from "@/generalComponents/FileUploaderMain";
 import PurpleBtn from "@/generalComponents/purpleBtn";
@@ -9,7 +9,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useNavigate } from "react-router-dom";
 import MapWithSearch from "@/generalComponents/MapWithSearch";
-import type { Location } from "@/client/accountSetup/ClientAccountSetup";
+import type { Location } from "@/userRoles/client/accountSetup/ClientAccountSetup";
 import ProfileSetup from "@/generalComponents/ProfileSetup";
 
 
