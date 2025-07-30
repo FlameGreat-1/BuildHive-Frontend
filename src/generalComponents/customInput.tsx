@@ -12,9 +12,10 @@ interface props {
     classes?:string;
     placeholderClasses?:string;
     inputClasses?:string;
+    onKeyDown?:(e:React.KeyboardEvent<HTMLInputElement>)=>void
 }
 
-const CustomInput = ({ name, type, icon, handleChange, placeholder,value,classes,placeholderClasses,inputClasses }: props) => {
+const CustomInput = ({ name, type, icon, handleChange, placeholder,value,classes,placeholderClasses,inputClasses, onKeyDown }: props) => {
 
     const [showPassword, setShowPassword] = useState(false)
     const isPassword = type === 'password'
@@ -25,6 +26,7 @@ const CustomInput = ({ name, type, icon, handleChange, placeholder,value,classes
             {icon && <FontAwesomeIcon icon={icon} className="absolute left-3 top-1/2 -translate-y-1/2 text-primary-purple" />}
             <input
                 onChange={handleChange}
+                onKeyDown={onKeyDown}
                 value={value}
                 name={name}
                 id={name}
