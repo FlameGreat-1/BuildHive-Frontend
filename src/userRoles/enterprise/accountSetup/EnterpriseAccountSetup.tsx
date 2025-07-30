@@ -7,7 +7,7 @@ import type { Location } from "@/userRoles/client/accountSetup/ClientAccountSetu
 import { validateEmail } from "@/utils/validators"
 import { faArrowLeft, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import React, { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 
@@ -148,7 +148,13 @@ const EnterpriseAccountSetup = () => {
         <div className="w-screen max-w-[500px] p-4 flex flex-col items-center max-h-[900px] ">
 
           {step === 0 && (
-            <div className="w-full p-4 flex flex-col gap-4">
+            <motion.div
+              key="step1"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 50 }}
+              transition={{ duration: 0.4 }}
+              className="w-full p-4 flex flex-col gap-4">
               <div className="space-y-2">
                 <p className="text-xl sm:text-2xl md:text-3xl text-center ">Tell Us About Your Company</p>
                 <p className="text-sm mt-2 md:mt-4 sm:text-base md:text-xl text-center">This helps us tailor Build Hive to your operations.</p>
@@ -191,7 +197,7 @@ const EnterpriseAccountSetup = () => {
                 text="Continue"
                 classes="w-full max-w-[300px] self-center"
                 upperCase="false" />
-            </div>
+            </motion.div>
           )}
 
           {
@@ -316,11 +322,11 @@ const EnterpriseAccountSetup = () => {
                   setLocations={setLocations}
                 />
                 <div className="flex-center gap-4 flex-col  justify-between mt-8">
-                  <PurpleBtn 
-                  text="Continue" 
-                  upperCase="false" 
-                  classes="w-full max-w-[300px] text-center" 
-                  click={() => { navigate('complete') }} />
+                  <PurpleBtn
+                    text="Continue"
+                    upperCase="false"
+                    classes="w-full max-w-[300px] text-center"
+                    click={() => { navigate('complete') }} />
                   <p
                     onClick={() => { navigate('complete') }}
                     className="text-gray-400 md:text-xl cursor-pointer">Skip for now</p>
