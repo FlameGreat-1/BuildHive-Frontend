@@ -10,7 +10,7 @@ const ClientAccountSetupComplete = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.4 }}
-            className="relative w-full h-screen max-h-[1000px] flex-center text-black"
+            className="relative w-screen h-screen max-h-[1000px] flex-center text-black"
         >
             <img
                 src={bgImage}

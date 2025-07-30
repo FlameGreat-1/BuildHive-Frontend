@@ -1,4 +1,5 @@
-import ProtectedRoutes from "../pages/auth/protectedRoutes"
+import EnterpriseAccountSetup from "@/userRoles/enterprise/accountSetup/AccountSetup"
+import ProtectedRoutes from "../auth/protectedRoutes"
 
 const isAuthenticated = true
 const role = 'enterprise'
@@ -13,7 +14,8 @@ export const enterpriseRoutes = [
         />,
         children: [
             {
-
+                path: 'account-setup',
+                element: <EnterpriseAccountSetup />
             }
         ]
     }

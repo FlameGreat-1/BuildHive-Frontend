@@ -1,6 +1,6 @@
-import TradieAccountSetup from "@/tradie/accountSetup/tradieAccountSetup"
-import ProtectedRoutes from "../pages/auth/protectedRoutes"
-import TradieAccountSetupComplete from "@/tradie/accountSetup/tradieAccountSetupComplete"
+import TradieAccountSetup from "@/userRoles/tradie/accountSetup/tradieAccountSetup"
+import ProtectedRoutes from "../auth/protectedRoutes"
+import TradieAccountSetupComplete from "@/userRoles/tradie/accountSetup/tradieAccountSetupComplete"
 
 const isAuthenticated = true
 const role = 'tradie'
@@ -15,12 +15,12 @@ export const tradieRoutes = [
         />,
         children: [
             {
-                path:'account-setup',
-                element:<TradieAccountSetup/>
+                path: 'account-setup',
+                element: <TradieAccountSetup />
             },
             {
-                path:'account-setup/complete',
-                element:<TradieAccountSetupComplete/>
+                path: 'account-setup/complete',
+                element: <TradieAccountSetupComplete />
             },
         ]
     }

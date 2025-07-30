@@ -11,7 +11,7 @@ import OnboardingPage from './pages/onboarding/onboardingPage.tsx';
 import SignIn from './pages/onboarding/signInPage/LoginPage.tsx';
 import ForgotPassword from './pages/forgotPassword/forgotPassword.tsx';
 import SignUp from './pages/signUp/signUp.tsx';
-import AuthPage from './pages/auth/auth.tsx';
+import AuthPage from './auth/auth.tsx';
 import { clientRoutes } from './routes/clientRoutes.tsx';
 import { enterpriseRoutes } from './routes/enterpriseRoutes.tsx';
 import { tradieRoutes } from './routes/tradieRoutes.tsx';
@@ -52,8 +52,8 @@ const router = createBrowserRouter([
     element: <AuthPage />,
     children: [
       {
-      path: 'sign-in',
-      element: <SignIn />
+        path: 'sign-in',
+        element: <SignIn />
       },
       {
         path: 'sign-up',
@@ -62,9 +62,9 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path:"/app",
-    element:<App/>,
-    children:[
+    path: "/app",
+    element: <App />,
+    children: [
       ...clientRoutes,
       ...enterpriseRoutes,
       ...tradieRoutes,

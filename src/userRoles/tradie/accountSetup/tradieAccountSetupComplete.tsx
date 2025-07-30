@@ -14,10 +14,10 @@ const TradieAccountSetupComplete = () => {
       transition={{ duration: 0.4 }}
       className="w-screen h-screen relative flex-center text-black">
       <img
-        className='min-h-screen absolute object-cover'
+        className='min-h-screen w-screen absolute object-cover'
         src={tradieBg}
         alt="Tradie Acc Bg" />
-      <div className=" w-full p-4 glassmorphic flex-center rounded-[20px] max-w-[90%] sm:max-w-[400px]">
+      <div className=" w-full p-4 glassmorphic flex-center rounded-[20px] max-w-[90%]  sm:max-w-[400px]">
         <div className=" w-full max-w-[400px] flex-center flex-col gap-4 p-4">
           <div className="flex-center flex-col gap-4 text-center ">
             <p className=" text-xl sm:text-2xl md:text-3">You're All Set!</p>

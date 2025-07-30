@@ -1,6 +1,6 @@
-import ClientAccountSetupComplete from "@/client/accountSetup/ClientAccountSetupComplete"
-import ClientAccountSetup from "../client/accountSetup/ClientAccountSetup"
-import ProtectedRoutes from "../pages/auth/protectedRoutes"
+import ClientAccountSetupComplete from "@/userRoles/client/accountSetup/ClientAccountSetupComplete"
+import ClientAccountSetup from "@/userRoles/client/accountSetup/ClientAccountSetup"
+import ProtectedRoutes from "@/auth/protectedRoutes"
 
 const isAuthenticated = true
 const role = 'client'
