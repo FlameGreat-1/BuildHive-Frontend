@@ -1,5 +1,5 @@
-import EnterpriseAccountSetup from "@/userRoles/enterprise/accountSetup/AccountSetup"
-import ProtectedRoutes from "../auth/protectedRoutes"
+import EnterpriseAccountSetup from "@/userRoles/enterprise/accountSetup/EnterpriseAccountSetup"
+import ProtectedRoutes from "@/auth/protectedRoutes"
 
 const isAuthenticated = true
 const role = 'enterprise'

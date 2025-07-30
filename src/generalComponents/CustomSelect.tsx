@@ -5,7 +5,7 @@ import React from 'react'
 import Select from 'react-select'
 import CustomDropdownIndicator from './CustomDropdownIndicator'
 
-type Option = {
+export type Option = {
   value: string
   label: string
 }
@@ -14,6 +14,7 @@ type Props = {
   options: Option[]
   value: Option[]
   onChange: (value: Option[]) => void
+  single?:boolean;
 }
 
 const customStyles = {
@@ -87,10 +88,11 @@ const customStyles = {
   }),
 }
 
-const CustomSelect: React.FC<Props> = ({ options, value, onChange }) => {
+const CustomSelect: React.FC<Props> = ({ options, value, onChange,single }) => {
   return (
     <Select
-      isMulti
+      className='w-full'
+      isMulti={single?false:true}
       components={{
         DropdownIndicator:CustomDropdownIndicator,
         IndicatorSeparator:()=>null,
