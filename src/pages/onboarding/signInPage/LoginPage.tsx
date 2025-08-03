@@ -131,7 +131,10 @@ const SignIn: React.FC = () => {
 
           {/* SOCIAL LOGINS  */}
 
-          <div className="my-6 text-center relative flex-center text-gray-500"><p className="bg-light-white font-medium px-4 relative w-fit z-10">Or Continue With</p><hr className="w-full absolute top-1/2 z-1" /></div>
+          <div className="my-6 text-center relative flex-center text-gray-500">
+            <p className="bg-light-white font-medium px-4 relative w-fit z-10">Or Continue With</p>
+            <hr className="w-full absolute top-1/2 z-1" />
+          </div>
           <div className="flex justify-center gap-8 mb-2">
             <p className="text-3xl text-gray-600">
               <img src={gLogo} className="w-8" alt="Google" />
