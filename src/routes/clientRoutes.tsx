@@ -1,6 +1,8 @@
 import ClientAccountSetupComplete from "@/userRoles/client/accountSetup/ClientAccountSetupComplete"
 import ClientAccountSetup from "@/userRoles/client/accountSetup/ClientAccountSetup"
 import ProtectedRoutes from "@/auth/protectedRoutes"
+import Dashboard from "@/userRoles/client/dashboard/Dashboard"
+import ClientHome from "@/userRoles/client/home/ClientHomepage"
 
 const isAuthenticated = true
 const role = 'client'
@@ -21,6 +23,17 @@ export const clientRoutes = [
             {
                 path: 'account-setup/complete',
                 element: <ClientAccountSetupComplete />
+            },
+            {
+                path: '',
+                element: <Dashboard />,
+                children:[
+                {
+                    path: 'home',
+                    element: <ClientHome />
+                },
+
+                ]
             },
         ]
     }
