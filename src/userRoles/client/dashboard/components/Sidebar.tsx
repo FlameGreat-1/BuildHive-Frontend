@@ -62,7 +62,7 @@ const Sidebar = ({ showSidebar, hideSidebar }: SideBarProps) => {
     return (
         <div
 
-            className={`${!showSidebar && ''} w-[90%] md:w-full relative max-w-[300px] p-4 z-10 bg-light-white`}>
+            className={`${!showSidebar && ''} w-[90%] md:w-full  relative max-w-full p-4 z-10 bg-light-white`}>
 
             <div className="w-full flex justify-between items-center">
                 <BuildHiveIcon />
@@ -92,7 +92,8 @@ const Sidebar = ({ showSidebar, hideSidebar }: SideBarProps) => {
                             key={index}
                         >
                             <div
-                                className='w-full flex justify-start items-center gap-2 rounded-[15px] p-2 focus:bg-gray-300 hover:bg-gray-300  focus:text-black hover:text-black text-gray-500 cursor-pointer'
+                                onClick={hideSidebar}
+                                className='w-full glassmorphic flex justify-start items-center gap-2 rounded-[15px] p-2 focus:bg-gray-300 hover:bg-gray-300  focus:text-black hover:text-black text-gray-500 cursor-pointer'
                             >
                                 <img
                                     className='w-8'
@@ -109,10 +110,13 @@ const Sidebar = ({ showSidebar, hideSidebar }: SideBarProps) => {
                 <p className="text-gray-400 border-b border-gray-400">SETTINGS</p>
                 {
                     settingsLinks.map((item, index) => (
-                        <Link to={item.link}>
+                        <Link
+                            key={index}
+                            to={item.link}>
                             <div
-                                className='w-full flex justify-start items-center gap-2 rounded-[15px] p-2 focus:bg-gray-300 hover:bg-gray-300  focus:text-black hover:text-black text-gray-500 cursor-pointer'
-                                key={index}>
+                                onClick={hideSidebar}
+                                className='w-full glassmorphic flex justify-start items-center gap-2 rounded-[15px] p-2 focus:bg-gray-300 hover:bg-gray-300  focus:text-black hover:text-black text-gray-500 cursor-pointer'
+                            >
                                 <img
                                     className='w-8'
                                     src={item.image}
