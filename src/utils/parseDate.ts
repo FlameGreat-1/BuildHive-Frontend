@@ -11,23 +11,23 @@ const parseDate = (unknownDate:Date) => {
     return (formattedDate)
 }
 
-function getOrdinalSuffix(day:number){
-    if (day>=11 && day<=13 ){
-        return 'th'
-    } switch (day % 10) {
-        case 1:
-            return 'st'
-            break;
-        case 2:
-            return 'nd'
-            break;
-        case 3:
-            return 'rd'
-            break;
-        default:
-            return 'th'
-            break;
-    }
-}
+// function getOrdinalSuffix(day:number){
+//     if (day>=11 && day<=13 ){
+//         return 'th'
+//     } switch (day % 10) {
+//         case 1:
+//             return 'st'
+//             break;
+//         case 2:
+//             return 'nd'
+//             break;
+//         case 3:
+//             return 'rd'
+//             break;
+//         default:
+//             return 'th'
+//             break;
+//     }
+// }
 
 export default parseDate;

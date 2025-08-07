@@ -3,6 +3,7 @@ import ClientAccountSetup from "@/userRoles/client/accountSetup/ClientAccountSet
 import ProtectedRoutes from "@/auth/protectedRoutes"
 import Dashboard from "@/userRoles/client/dashboard/Dashboard"
 import ClientHome from "@/userRoles/client/home/ClientHomepage"
+import JobCastPage from "@/userRoles/client/jobCast/JobCastPage"
 
 const isAuthenticated = true
 const role = 'client'
@@ -31,6 +32,10 @@ export const clientRoutes = [
                 {
                     path: 'home',
                     element: <ClientHome />
+                },
+                {
+                    path: 'job-cast',
+                    element: <JobCastPage />
                 },
 
                 ]
