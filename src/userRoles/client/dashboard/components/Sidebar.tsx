@@ -62,7 +62,7 @@ const Sidebar = ({ showSidebar, hideSidebar }: SideBarProps) => {
     return (
         <div
 
-            className={`${!showSidebar && ''} w-[90%] md:w-full  relative max-w-full p-4 z-10 bg-light-white`}>
+            className={`${!showSidebar && ''} w-[90%] md:w-full  relative max-w-full p-4 z-[100] bg-light-white`}>
 
             <div className="w-full flex justify-between items-center">
                 <BuildHiveIcon />

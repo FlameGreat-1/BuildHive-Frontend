@@ -9,8 +9,9 @@ const Dashboard = () => {
   return (
     <div className="flex bg-light-white justify-center text-black w-screen h-screen relative overflow-hidden">
       <div 
+        // onClick={()=>setShowSidebar(false)}
       className={`${showSidebar ? 'xs:block' : 'hidden'} 
-       md:block w-full md:max-w-[220px]  absolute md:relative 
+       md:block w-full md:max-w-[220px] z-[100] absolute md:relative 
       `}>
         <Sidebar
         showSidebar={showSidebar}
@@ -19,7 +20,7 @@ const Dashboard = () => {
         <div
         onClick={()=>setShowSidebar(false)}
         className={`
-        bg-gray-400 absolute md:hidden opacity-60 top-0 right-0 bottom-0 left-0 w-screen h-screen`}></div>
+        bg-gray-400 absolute md:hidden opacity-60 top-0 right-0 z-[50] bottom-0 left-0 w-screen h-screen`}></div>
 
       </div>
         <div className="flex flex-col w-full h-screen max-w-[900px] relative">
