@@ -4,7 +4,7 @@ import ClientHeader from "./components/Header"
 import { createContext, useContext, useState } from "react"
 
 
-export const PageTitleContext = createContext<(title: string) => void>(() => { })
+const PageTitleContext = createContext<(title: string) => void>(() => { })
 export const usePageTitle = () => useContext(PageTitleContext)
 
 const Dashboard = () => {
