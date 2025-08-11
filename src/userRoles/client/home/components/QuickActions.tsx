@@ -6,9 +6,11 @@ interface Props {
 const QuickActions = ({children,title}:Props) => {
   return (
     <div className="text-light-white text-xs sm:text-regular
-    max-w-[150px]
+    max-w-[130px]
       bg-gradient-to-l from-secondary-blue to-primary-purple
-     flex flex-col lg:flex-row p-2 lg:p-4 items-center text-center justify-center gap-2 rounded-md">
+      hover:scale-[1.1] focus:scale-[1.1] transition-transform
+      hover:bg-gradient-to-r transition-all focus:bg-gradient-to-r cursor-pointer
+     flex flex-col lg:flex-row p-2 items-center text-center justify-center gap-2 rounded-md">
         {children}
         <p className="">{title}</p>
     </div>

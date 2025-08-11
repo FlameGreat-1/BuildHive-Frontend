@@ -79,3 +79,7 @@
     border-radius: 8px;
 
 }
+
+#sidebar a.active div{
+    background-color: #a955f760;
+}

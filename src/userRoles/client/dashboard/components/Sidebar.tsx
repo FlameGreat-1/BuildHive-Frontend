@@ -1,7 +1,7 @@
 import { Sidebar as SideBar } from 'lucide-react'
 import profilePhoto from '@/assets/images/profilePic.png'
 import dashBoardIcon from '@/assets/icons/dashboardIcon.svg'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import BuildHiveIcon from '@/generalComponents/BuildHiveIcon'
 import messagesIcon from '@/assets/icons/messagesIcon.svg'
 import jobCastIcon from '@/assets/icons/jobCastIcon.svg'
@@ -61,7 +61,7 @@ const Sidebar = ({ showSidebar, hideSidebar }: SideBarProps) => {
 
     return (
         <div
-
+            id='sidebar'
             className={`${!showSidebar && ''} w-[90%] md:w-full  relative max-w-full p-4 z-[100] bg-light-white`}>
 
             <div className="w-full flex justify-between items-center">
@@ -85,15 +85,15 @@ const Sidebar = ({ showSidebar, hideSidebar }: SideBarProps) => {
             </div>
             {/* MENU SECTION */}
             <div className='mt-2 flex-col flex gap-2 w-full p-2'>
-                <p className="text-gray-400">MENU</p>
+                <p className="text-black">MENU</p>
                 {
                     menuLinks.map((item, index) => (
-                        <Link to={item.link}
+                        <NavLink to={item.link}
                             key={index}
                         >
                             <div
                                 onClick={hideSidebar}
-                                className='w-full glassmorphic flex justify-start items-center gap-2 rounded-[15px] p-2 focus:bg-gray-300 hover:bg-gray-300  focus:text-black hover:text-black text-gray-500 cursor-pointer'
+                                className='w-full glassmorphic flex justify-start items-center gap-2 rounded-[15px] p-2 focus:font-bold hover:font-bold text-black cursor-pointer'
                             >
                                 <img
                                     className='w-8'
@@ -101,21 +101,21 @@ const Sidebar = ({ showSidebar, hideSidebar }: SideBarProps) => {
                                     alt={item.title} />
                                 <p className=''>{item.title}</p>
                             </div>
-                        </Link>
+                        </NavLink>
                     ))
                 }
             </div>
             {/* SETTINGS SECTION */}
             <div className='mt-2 flex-col flex gap-2 w-full p-2'>
-                <p className="text-gray-400 border-b border-gray-400">SETTINGS</p>
+                <p className="text-black border-b border-gray-400">SETTINGS</p>
                 {
                     settingsLinks.map((item, index) => (
-                        <Link
+                        <NavLink
                             key={index}
                             to={item.link}>
                             <div
                                 onClick={hideSidebar}
-                                className='w-full glassmorphic flex justify-start items-center gap-2 rounded-[15px] p-2 focus:bg-gray-300 hover:bg-gray-300  focus:text-black hover:text-black text-gray-500 cursor-pointer'
+                                className='w-full glassmorphic flex justify-start items-center gap-2 rounded-[15px] p-2   focus:font-bold hover:font-bold text-black cursor-pointer'
                             >
                                 <img
                                     className='w-8'
@@ -123,7 +123,7 @@ const Sidebar = ({ showSidebar, hideSidebar }: SideBarProps) => {
                                     alt={item.title} />
                                 <p className=''>{item.title}</p>
                             </div>
-                        </Link>
+                        </NavLink>
                     ))
                 }
             </div>

@@ -36,10 +36,10 @@ const StatusComp = ({status}:Prop)=>{
     // }
     return (
         <div className={`
-            ${status.toLowerCase() === 'pending' && 'bg-red-400'} 
-            ${status.toLowerCase() === 'in progress' && 'bg-blue-500'} 
-            ${status.toLowerCase() === 'completed' && 'bg-green-500'} 
-        text-xs lg:text-sm rounded-sm w-fit p-1`}>
+            ${status.toLowerCase() === 'pending' && 'text-red-400'} 
+            ${status.toLowerCase() === 'in progress' && 'text-blue-500'} 
+            ${status.toLowerCase() === 'completed' && 'text-green-500'} 
+        text-xs rounded-xl w-fit font-sans p-1`}>
             {status}
         </div>
     )

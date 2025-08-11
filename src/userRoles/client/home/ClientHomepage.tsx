@@ -3,6 +3,8 @@ import QuickActions from "./components/QuickActions"
 import tradiePic from '@/assets/images/profilePic.png'
 import StatusComp from "./components/StatusComp"
 import parseDate from "@/utils/parseDate"
+import { usePageTitle } from "../dashboard/Dashboard"
+import { useEffect } from "react"
 
 
 const dashboardInfo = [
@@ -97,25 +99,29 @@ const quickActions = [
 ]
 
 const ClientHome = () => {
+    const setTitle = usePageTitle()
+    useEffect(()=>{
+        setTitle('Dashboard')
+    },[])
 
     return (
-        <div className="flex flex-col gap-4 p-4 ">
-            <h2 className='text-lg md:text-2xl font-bold'>Dashboard</h2>
-            <div className="grid grid-cols-3 gap-2">
+        <div className="flex flex-col gap-4 md:gap-8 p-4 ">
+            {/* <h2 className='text-lg md:text-2xl font-bold'>Dashboard</h2> */}
+            <div className="grid w-full shadow-md  p-4 md:p-8 md:place-items-center grid-cols-3 gap-2">
                 {
                     dashboardInfo.map((info, index) => (
                         <div
                             key={index}
-                            className="min-w-[50px] rounded-md glassmorphic bg-primary-purple/30 text-center max-w-[180px] place-content-center aspect-square">
-                            <p className="font-semibold text-md md:text-2xl">{info.info}</p>
-                            <p className="text-gray-600">{info.title}</p>
+                            className="min-w-[50px] rounded-md shadow-lg glassmorphic bg-light-white/50 hover:border-black border hover:bg-slate-500  hover:text-light-white p-2 text-center max-w-[150px] place-content-center aspect-square">
+                            <p className=" text-sm md:text-xl">{info.title}</p>
+                            <p className="font-bold text-md md:text-2xl">{info.info}</p>
                         </div>
                     ))
                 }
             </div>
-            <div className="space-y-2">
-                <h3 className="font-semibold md:text-xl">Quick Actions</h3>
-                <div className="grid grid-cols-4 gap-2">
+            <div className="space-y-4 shadow-md px-4 py-4 md:py-8">
+                <h3 className="font-semibold text-lg md:text-2xl font-sans justify-self-center">Quick Actions</h3>
+                <div className="grid md:place-items-center grid-cols-4 gap-2">
                     {
                         quickActions.map((action, index) => (
                             <QuickActions
@@ -129,7 +135,7 @@ const ClientHome = () => {
             </div>
             {/* MOBILE RECENT JOBS SECTION */}
             <div className="md:hidden w-full ">
-                <h3 className="font-semibold md:text-xl">Recent Jobs</h3>
+                <h3 className="font-semibold text-lg md:text-2xl font-sans">Recent Jobs</h3>
                 <div className="flex flex-col gap-2 ">
 
                     {
@@ -159,11 +165,11 @@ const ClientHome = () => {
             </div>
             {/* DESKTOP RECENT JOBS SECTION */}
             <div className="hidden md:block w-full">
-                <h3 className="font-semibold md:text-xl">Recent Jobs</h3>
+                <h3 className="font-semibold text-lg md:text-2xl font-sans">Recent Jobs</h3>
                 <table className='w-full p-2 border-separate border-spacing-y-3
                 '>
                     <thead>
-                        <tr>
+                        <tr className="text-sm lg:text-xl">
                             <th>
                                 Title
                             </th>
@@ -183,20 +189,20 @@ const ClientHome = () => {
                             recentJobs.map((job, index) => (
                                 <tr
                                     key={index}
-                                    className="ring-2 ring-gray-400 hover:ring-secondary-blue focus:ring-secondary-blue rounded-md  ">
+                                    className="shadow-md ring-gray-400 hover:shadow-lg focus:shadow-lg rounded-md  ">
                                     <td className='text-center items-center p-2'>
                                         <div className='flex-center  gap-1 p-2'>
                                             <img
-                                                className="w-8 aspect-square object-center overflow-hidden rounded-[50%]"
+                                                className="min-w-8 w-8 aspect-square object-center overflow-hidden rounded-[50%]"
                                                 src={job.pic}
                                                 alt={job.tradie} />
                                             <div className="">
-                                                <p className="text-xs">{job.tradie}</p>
-                                                <p className="text-gray-500">{job.title}</p>
+                                                <p className="text-sm text-nowrap">{job.tradie}</p>
+                                                <p className="text-gray-500 text-xs">{job.title}</p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td className='text-center items-center justify-center'>
+                                    <td className='text-center items-center justify-center '>
                                         <div className="flex items-center flex-col  w-full">
                                             <p className="font-semibold max-w-[200px] truncate">{job.description}</p>
                                             <StatusComp status={job.status} />
@@ -207,7 +213,7 @@ const ClientHome = () => {
                                         {/* <p className="flex-center w-full">
                                         </p> */}
                                         </td>
-                                    <td className='text-center items-center'>
+                                    <td className='text-center items-center text-sm lg:text-base'>
                                         <p>{parseDate(job.deadline)}</p>
                                     </td>
                                 </tr>
