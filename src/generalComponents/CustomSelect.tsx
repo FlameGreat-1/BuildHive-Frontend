@@ -9,10 +9,14 @@ export type Option = {
   value: string
   label: string
 }
+export type OptionGroup = {
+  label: string;
+  options:Option[]
+}
 
 type Props = {
-  options: Option[]
-  value: Option[]
+  options: Option[]|OptionGroup[]
+  value: Option[]|null
   onChange: (value: Option[]) => void
   single?:boolean;
 }

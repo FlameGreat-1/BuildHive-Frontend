@@ -11,6 +11,7 @@ import { useAntiCopy } from "../../../hooks/useAntiCopy";
 
 const SignIn: React.FC = () => {
 
+  const role = 'client'
   useAntiCopy();
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>();
@@ -27,12 +28,14 @@ const SignIn: React.FC = () => {
       setSignInForm({ ...signInForm, [name]: value.trim() })
     }
   }
+
   const signIn = () => {
     const { username, password } = signInForm
     if (username === "" || password === "") {
       setError("Please fill in all fields");
     } else {
       setError(null);
+      navigate(`/app/${role}/home`)
       console.log(signInForm)
     }
   };

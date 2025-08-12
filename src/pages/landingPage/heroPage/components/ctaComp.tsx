@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom"
 import PurpleBtn from "../../../../generalComponents/purpleBtn"
 
 const CtaComp = () => {
+    const navigate = useNavigate()
     return (
         <div className='  w-full flex-center p-4 
         bg-gradient-to-b from-accent-purple/20 to-accent-purple/70
@@ -17,7 +19,9 @@ const CtaComp = () => {
                         Join thousands of professionals using Build Hive to streamline their jobs, manage clients, and grow their business — whether you're a solo tradie or running a full construction team.
                     </p>
                 </div>
-                <PurpleBtn text="get started for free" />
+                <PurpleBtn
+                    click={() => {navigate('/auth/sign-in')}}
+                    text="get started for free" />
             </div>
 
         </div>

@@ -4,6 +4,7 @@ import CustomSelect, { type Option } from "@/generalComponents/CustomSelect"
 import MapWithSearch from "@/generalComponents/MapWithSearch"
 import PurpleBtn from "@/generalComponents/purpleBtn"
 import type { Location } from "@/userRoles/client/accountSetup/ClientAccountSetup"
+import { tradeOptions } from "@/utils/TradeOptions"
 import { validateEmail } from "@/utils/validators"
 import { faArrowLeft, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -28,16 +29,9 @@ const EnterpriseAccountSetup = () => {
 
   const navigate = useNavigate()
 
-  const options = [
-    { label: '', value: '' },
-    { label: '', value: '' },
-    { label: '', value: '' }
-  ]
-  const jobCategories = [
-    { label: '', value: '' },
-    { label: '', value: '' },
-    { label: '', value: '' }
-  ]
+  const options = tradeOptions
+  const jobCategories = tradeOptions
+  
   const companySize = [
     { label: '1 - 5', value: '5' },
     { label: '5 - 10', value: '10' },
@@ -155,11 +149,11 @@ const EnterpriseAccountSetup = () => {
               exit={{ opacity: 0, x: 50 }}
               transition={{ duration: 0.4 }}
               className="w-full p-4 flex flex-col gap-4">
-              <div className="space-y-2">
-                <p className="text-xl sm:text-2xl md:text-3xl text-center ">Tell Us About Your Company</p>
+              <div className="space-y-1">
+                <p className="text-xl sm:text-2xl md:text-3xl text-center font-bold">Tell Us About Your Company</p>
                 <p className="text-sm mt-2 md:mt-4 sm:text-base md:text-xl text-center">This helps us tailor Build Hive to your operations.</p>
               </div>
-              <div className="flex flex-col items-center gap-4">
+              <div className="flex flex-col items-center gap-2">
                 <CustomInput
                   name="companyName"
                   type="text"
@@ -189,6 +183,7 @@ const EnterpriseAccountSetup = () => {
                   type="text"
                   value={companyInfo.address}
                   handleChange={handleChange}
+                  classes="mt-2"
                   placeholder="Office / Base Address"
                 />
               </div>
@@ -266,11 +261,11 @@ const EnterpriseAccountSetup = () => {
                 transition={{ duration: 0.4 }}
                 className="w-full p-4 flex flex-col gap-4">
                 <div className="space-y-2">
-                  <p className="text-xl sm:text-2xl md:text-3xl text-center ">Customize Your Job Flow</p>
+                  <p className="text-xl sm:text-2xl md:text-3xl text-center font-bold ">Customize Your Job Flow</p>
                   <p className="text-sm mt-2 md:mt-4 sm:text-base md:text-xl text-center">We'll set up your dashboard based on this.</p>
                 </div>
                 <div className="flex-col flex gap-2 w-full">
-                  <p className="ml-4">Job Categories</p>
+                  <p className="ml-4 font-semibold">Job Categories</p>
                   <CustomSelect
                     // single={true}
                     options={jobCategories}
@@ -279,7 +274,7 @@ const EnterpriseAccountSetup = () => {
                   />
                 </div>
                 <div className="w-full">
-                  <p>Do you post jobs publicly?</p>
+                  <p className="font-semibold mb-1">Do you post jobs publicly?</p>
                   <div className='w-full flex justify-between'>
                     <Radio
                       name='publicPosting'
@@ -300,7 +295,7 @@ const EnterpriseAccountSetup = () => {
                   </div>
                 </div>
                 <div className="w-full">
-                  <p>Do you assign jobs internally?</p>
+                  <p className="font-semibold mb-1">Do you assign jobs internally?</p>
                   <div className='w-full flex justify-between'>
                     <Radio
                       name='internalJobs'
@@ -332,8 +327,8 @@ const EnterpriseAccountSetup = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 50 }}
                 transition={{ duration: 0.4 }}
-                className="min-w-[250px] max-w-[400px] w-full p-2">
-                <p className="text-xl sm:text-2xl md:text-3xl text-center ">Set Your Operating Locations</p>
+                className="min-w-[250px] max-w-[500px] w-full p-2">
+                <p className="text-xl sm:text-2xl md:text-3xl text-center font-bold">Set Your Operating Locations</p>
                 <p className="text-sm mt-2 md:mt-4 sm:text-base md:text-xl text-center">Select one or more areas where your company accepts or assigns jobs.</p>
                 <MapWithSearch
                   locations={locations}

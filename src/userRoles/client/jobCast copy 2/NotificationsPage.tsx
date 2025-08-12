@@ -1,14 +1,14 @@
 import BuildHiveLoader from "@/generalComponents/BuildHiveLoader"
 
-const JobCastPage = () => {
+const NotificationsPage = () => {
   
   const loading = true
 
   if(loading)return <BuildHiveLoader/>
   
   return (
-    <div>JobCastPage</div>
+    <div>NotificationsPage</div>
   )
 }
 
-export default JobCastPage
+export default NotificationsPage

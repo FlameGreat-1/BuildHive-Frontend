@@ -11,15 +11,11 @@ import { Link, useNavigate } from "react-router-dom";
 import MapWithSearch from "@/generalComponents/MapWithSearch";
 import type { Location } from "@/userRoles/client/accountSetup/ClientAccountSetup";
 import ProfileSetup from "@/generalComponents/ProfileSetup";
+import { tradeOptions } from "@/utils/TradeOptions";
 
 
 
-const tagOptions: Option[] = [
-    { label: "Remote", value: "remote" },
-    { label: "Onsite", value: "onsite" },
-    { label: "Full Time", value: "fulltime" },
-    { label: "Part Time", value: "parttime" },
-];
+const tagOptions = tradeOptions
 
 const radios = [
     {
@@ -106,11 +102,11 @@ const TradieAccountSetup = () => {
                                 transition={{ duration: 0.4 }}
                                 className='flex justify-center w-full flex-col gap-4 '>
                                 <div className="flex-center flex-col gap-1">
-                                    <p className="text-black text-2xl md:text-3xl">What Kind of work do you do?</p>
-                                    <p className="text-black text-lg md:text-xl">This helps us match you with the right jobs.</p>
+                                    <p className="text-black font-bold text-2xl md:text-3xl">What Kind of work do you do?</p>
+                                    <p className="text-black  text-lg md:text-xl">This helps us match you with the right jobs.</p>
                                 </div>
                                 <div className="w-full space-y-2">
-                                    <p className="text-black ml-4">Job types you are interested in</p>
+                                    <p className="text-black ml-4 font-semibold">Job types you are interested in</p>
                                     <CustomSelect
                                         options={tagOptions}
                                         value={selectedTags}
@@ -118,7 +114,7 @@ const TradieAccountSetup = () => {
                                     />
                                 </div>
                                 <div>
-                                    <p className="mb-1 ml-4">Experience Level</p>
+                                    <p className="mb-1 ml-4 font-semibold">Experience Level</p>
                                     <div className="flex flex-wrap gap-2 self-center ">
                                         {
                                             radios.map((radio, index) => (

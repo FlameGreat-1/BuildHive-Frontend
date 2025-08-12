@@ -100,14 +100,14 @@ const quickActions = [
 
 const ClientHome = () => {
     const setTitle = usePageTitle()
-    useEffect(()=>{
+    useEffect(() => {
         setTitle('Dashboard')
-    },[])
+    }, [])
 
     return (
         <div className="flex flex-col gap-4 md:gap-8 p-4 ">
             {/* <h2 className='text-lg md:text-2xl font-bold'>Dashboard</h2> */}
-            <div className="grid w-full shadow-md  p-4 md:p-8 md:place-items-center grid-cols-3 gap-2">
+            <div className="grid w-full shadow-md py-4 sm:p-4 md:p-8 md:place-items-center grid-cols-3 gap-2">
                 {
                     dashboardInfo.map((info, index) => (
                         <div
@@ -135,14 +135,14 @@ const ClientHome = () => {
             </div>
             {/* MOBILE RECENT JOBS SECTION */}
             <div className="md:hidden w-full ">
-                <h3 className="font-semibold text-lg md:text-2xl font-sans">Recent Jobs</h3>
+                <h3 className="font-semibold text-lg md:text-2xl font-sans mb-2">Recent Jobs</h3>
                 <div className="flex flex-col gap-2 ">
 
                     {
                         recentJobs.map((job, index) => (
                             <div
                                 key={index}
-                                className="ring-[3px] ring-gray-400/50 rounded-md p-2 flex flex-col w-full gap-1">
+                                className="border border-slate-300 shadow-md hover:shadow-lg transition-all rounded-md p-2 flex flex-col w-full gap-1">
                                 <div className="flex justify-between items-center w-full">
                                     <p className="font-semibold max-w-[200px] md:max-w-[200px] text-sm truncate">{job.description}</p>
                                     <StatusComp status={job.status} />
@@ -154,7 +154,7 @@ const ClientHome = () => {
                                             className="w-6 aspect-square object-center overflow-hidden rounded-[50%]"
                                             src={job.pic}
                                             alt={job.tradie} />
-                                        <p className="text-xs">Assigned to {job.tradie}</p>
+                                        <p className="text-xs">{job.tradie}</p>
                                     </div>
                                     <p className="text-xs">{parseDate(job.deadline)}</p>
                                 </div>
@@ -191,20 +191,24 @@ const ClientHome = () => {
                                     key={index}
                                     className="shadow-md ring-gray-400 hover:shadow-lg focus:shadow-lg rounded-md  ">
                                     <td className='text-center items-center p-2'>
-                                        <div className='flex-center  gap-1 p-2'>
-                                            <img
-                                                className="min-w-8 w-8 aspect-square object-center overflow-hidden rounded-[50%]"
-                                                src={job.pic}
-                                                alt={job.tradie} />
-                                            <div className="">
-                                                <p className="text-sm text-nowrap">{job.tradie}</p>
-                                                <p className="text-gray-500 text-xs">{job.title}</p>
+                                        <div className="flex-start flex-col">
+                                            <p className="font-semibold max-w-[200px] truncate"
+                                            title={job.description}
+                                            >{job.description}</p>
+                                            <div className='flex-center  gap-1 p-2'>
+                                                <img
+                                                    className="min-w-8 w-8 aspect-square object-center overflow-hidden rounded-[50%]"
+                                                    src={job.pic}
+                                                    alt={job.tradie} />
+                                                <div className="">
+                                                    <p className="text-sm text-nowrap">{job.tradie}</p>
+                                                    <p className="text-gray-500 text-xs">{job.title}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </td>
                                     <td className='text-center items-center justify-center '>
                                         <div className="flex items-center flex-col  w-full">
-                                            <p className="font-semibold max-w-[200px] truncate">{job.description}</p>
                                             <StatusComp status={job.status} />
                                         </div>
                                     </td>
@@ -212,7 +216,7 @@ const ClientHome = () => {
                                         {job.location}
                                         {/* <p className="flex-center w-full">
                                         </p> */}
-                                        </td>
+                                    </td>
                                     <td className='text-center items-center text-sm lg:text-base'>
                                         <p>{parseDate(job.deadline)}</p>
                                     </td>

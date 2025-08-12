@@ -10,9 +10,11 @@ const QuickActions = ({children,title}:Props) => {
       bg-gradient-to-l from-secondary-blue to-primary-purple
       hover:scale-[1.1] focus:scale-[1.1] transition-transform
       hover:bg-gradient-to-r transition-all focus:bg-gradient-to-r cursor-pointer
-     flex flex-col lg:flex-row p-2 items-center text-center justify-center gap-2 rounded-md">
+     flex flex-col lg:flex-row p-2 items-center text-center justify-center gap-2 rounded-md"
+     title={title}
+     >
         {children}
-        <p className="">{title}</p>
+        <p className="hidden md:block">{title}</p>
     </div>
   )
 }

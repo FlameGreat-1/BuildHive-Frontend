@@ -3,8 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import PurpleBtn from "../../../../generalComponents/purpleBtn"
 import Banner from "./banner"
 import BgLandingComp from "./bgLandingComp"
+import { useNavigate } from "react-router-dom"
+
 
 const HeroSection = () => {
+    const navigate = useNavigate()
+    
     return (
         <BgLandingComp>
             <div className="relative  h-fit flex-center  max-w-6xl flex-col p-4">
@@ -12,13 +16,15 @@ const HeroSection = () => {
                     {/* HERO TEXT */}
                     <div className="w-[90%] sm:w-1/2 flex justify-center sm:justify-start sm:ml-4 flex-col gap-4 pb-4">
                         <h2 className="font-san text-center sm:text-left  font-semibold text-lg sm:leading-normal xl:text-[4rem] sm:text-[2rem]">
-                            Manage Jobs, Teams and Trades, -All in One Place.
+                            Manage Jobs, Teams and Trades -All in One Place.
                         </h2>
                         <p className="font-inter text-sm md:text-xl">
                             Streamline construction work with smart tools for clients, tradies and enterprises.
                         </p>
                         <div className="flex gap-4 flex-col items-center sm:justify-start sm:flex-row">
-                            <PurpleBtn text={"get started for free"} classes="sm:p-4 min-w-fit" />
+                            <PurpleBtn 
+                            click={()=>{navigate('/auth/sign-in')}}
+                            text={"get started for free"} classes="sm:p-4 min-w-fit" />
                             <div className="flex-center gap-2 ">
                                 <p className="text-xl text-nowrap">Learn More</p>
                                 <FontAwesomeIcon className="inline" icon={faArrowRight} />

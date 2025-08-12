@@ -9,6 +9,7 @@ import CustomInput from "@/generalComponents/customInput";
 import PurpleBtn from "@/generalComponents/purpleBtn";
 import { Radio } from "@/generalComponents/CustomCheckbox";
 import MapWithSearch from "@/generalComponents/MapWithSearch";
+import { tradeOptions } from '@/utils/TradeOptions.ts'
 // import bgImage from '@/assets/images/accountSetupBg.webp'
 
 export interface Location {
@@ -22,12 +23,7 @@ export interface Option {
   value: string;
 }
 
-const tagOptions: Option[] = [
-  { label: "Remote", value: "remote" },
-  { label: "Onsite", value: "onsite" },
-  { label: "Full Time", value: "fulltime" },
-  { label: "Part Time", value: "parttime" },
-];
+const tagOptions = tradeOptions
 
 const radios = [{
   name: 'frequency',
@@ -60,11 +56,12 @@ export default function ClientAccountSetup() {
     console.log({ ...form, [name]: value })
   }
   const next = () => {
-    if (step===1){navigate('complete');return}
-    setStep((s) => s + 1);}
+    if (step === 1) { navigate('complete'); return }
+    setStep((s) => s + 1);
+  }
   const prev = () => setStep((s) => s - 1);
 
-  
+
 
   return (
     <div className="w-screen bg-light-white min-h-screen relative mx-auto space-y-6 text-black flex justify-center items-start pt-12">
@@ -112,18 +109,21 @@ export default function ClientAccountSetup() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-wrap gap-2 ">
-              {
-                radios.map((radio, index) => (
-                  <Radio
-                    {...radio}
-                    key={index}
-                    onChange={handleChange}
-                    checked={form.frequency === radio.value ? true : false}
-                    labelClass={form.frequency === radio.value ? 'text-primary-purple ' : ''}
-                  />
-                ))
-              }
+            <div className="space-y-2 flex flex-col items-center">
+              <p className='font-semibold md:text-lg'>Job Posting Frequency</p>
+              <div className="flex flex-wrap gap-2 ">
+                {
+                  radios.map((radio, index) => (
+                    <Radio
+                      {...radio}
+                      key={index}
+                      onChange={handleChange}
+                      checked={form.frequency === radio.value ? true : false}
+                      labelClass={form.frequency === radio.value ? 'text-primary-purple ' : ''}
+                    />
+                  ))
+                }
+              </div>
             </div>
             <PurpleBtn
               text="Next"
@@ -152,8 +152,8 @@ export default function ClientAccountSetup() {
               <div className="flex-center gap-4 flex-col  justify-between mt-8">
                 <PurpleBtn text="Continue" upperCase="false" classes="w-full max-w-[300px] text-center" click={next} />
                 <p
-                onClick={()=>{navigate('complete')}} 
-                className="text-gray-400 md:text-xl cursor-pointer">Skip for now</p>
+                  onClick={() => { navigate('complete') }}
+                  className="text-gray-400 md:text-xl cursor-pointer">Skip for now</p>
 
               </div>
             </div>

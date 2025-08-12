@@ -15,6 +15,7 @@ import AuthPage from './auth/auth.tsx';
 import { clientRoutes } from './routes/clientRoutes.tsx';
 import { enterpriseRoutes } from './routes/enterpriseRoutes.tsx';
 import { tradieRoutes } from './routes/tradieRoutes.tsx';
+import NotFoundPage from './generalComponents/404page.tsx';
 
 
 
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       ...enterpriseRoutes,
       ...tradieRoutes,
     ]
+  },
+  {
+    path:'/*',
+    element:<NotFoundPage/>
   }
 ])
 

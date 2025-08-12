@@ -9,6 +9,7 @@ import RatingsComp from "./ratingsComp";
 
 import { useAutoScroll } from "../../../../hooks/useAutoScroll";
 import { tabSlides } from "../utils/utils";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -48,6 +49,7 @@ export const CarouselTabs: React.FC = () => {
   });
 
 
+const navigate = useNavigate()
 
   return (
     <section className="max-w-6xl w-full px-4 py-12 text-center">
@@ -88,7 +90,10 @@ export const CarouselTabs: React.FC = () => {
       </div>
 
       <div className="mt-8 flex md:ml-8 justify-center sm:justify-start">
-        <PurpleBtn text={"get started for free"} classes="sm:p-4 min-w-fit" />
+        <PurpleBtn 
+        click={()=>{navigate('/auth/sign-in')}}
+        text={"get started for free"} 
+        classes="sm:p-4 min-w-fit" />
       </div>
     </section>
   );

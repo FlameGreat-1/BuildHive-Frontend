@@ -16,7 +16,7 @@ const FifthSection = () => {
 
     return (
         <div className="flex-center ">
-            <RegSectionComp  {...props} />
+            <RegSectionComp  {...props} classes="sm:flex-row-reverse"/>
         </div>
     )
 }
