@@ -1,13 +1,297 @@
 import BuildHiveLoader from "@/generalComponents/BuildHiveLoader"
+import { SlidersHorizontal, X } from "lucide-react"
+import { useEffect, useState } from "react"
+import { usePageTitle } from "../dashboard/Dashboard"
+import profilePhoto from '@/assets/images/profilePic.png'
+import StatusComp from "../home/components/StatusComp"
+import parseDate from "@/utils/parseDate"
 
+
+const tradies = [
+  {
+    name: 'John Doe',
+    image: profilePhoto,
+    occupation: 'Electrician',
+    distance: '5km',
+    availability: 'busy'
+  },
+  {
+    name: 'John Doe',
+    image: profilePhoto,
+    occupation: 'Electrician',
+    distance: '5km',
+    availability: 'available'
+  },
+  {
+    name: 'John Doe',
+    image: profilePhoto,
+    occupation: 'Electrician',
+    distance: '5km',
+    availability: 'busy'
+  },
+  {
+    name: 'John Doe',
+    image: profilePhoto,
+    occupation: 'Electrician',
+    distance: '5km',
+    availability: 'available'
+  },
+  {
+    name: 'John Doe',
+    image: profilePhoto,
+    occupation: 'Electrician',
+    distance: '5km',
+    availability: 'busy'
+  },
+  {
+    name: 'John Doe',
+    image: profilePhoto,
+    occupation: 'Electrician',
+    distance: '5km',
+    availability: 'available'
+  },
+  {
+    name: 'John Doe',
+    image: profilePhoto,
+    occupation: 'Electrician',
+    distance: '5km',
+    availability: 'busy'
+  },
+  {
+    name: 'John Doe',
+    image: profilePhoto,
+    occupation: 'Electrician',
+    distance: '5km',
+    availability: 'available'
+  },
+  {
+    name: 'John Doe',
+    image: profilePhoto,
+    occupation: 'Electrician',
+    distance: '5km',
+    availability: 'busy'
+  },
+  {
+    name: 'John Doe',
+    image: profilePhoto,
+    occupation: 'Electrician',
+    distance: '5km',
+    availability: 'available'
+  },
+]
+
+const jobsPosted = [
+  {
+    title: 'Fix leaking pipe',
+    budget: 45,
+    posted: new Date(),
+    status: 'Open',
+    bids: 5
+  },
+  {
+    title: 'Fix leaking pipe',
+    budget: 45,
+    posted: new Date(),
+    status: 'Open',
+    bids: 5
+  },
+  {
+    title: 'Fix leaking pipe',
+    budget: 45,
+    posted: new Date(),
+    status: 'Open',
+    bids: 5
+  },
+  {
+    title: 'Fix leaking pipe',
+    budget: 45,
+    posted: new Date(),
+    status: 'Open',
+    bids: 5
+  },
+  {
+    title: 'Fix leaking pipe',
+    budget: 45,
+    posted: new Date(),
+    status: 'Open',
+    bids: 5
+  },
+  {
+    title: 'Fix leaking pipe',
+    budget: 45,
+    posted: new Date(),
+    status: 'Open',
+    bids: 5
+  },
+  {
+    title: 'Fix leaking pipe',
+    budget: 45,
+    posted: new Date(),
+    status: 'Open',
+    bids: 5
+  },
+  {
+    title: 'Fix leaking pipe',
+    budget: 45,
+    posted: new Date(),
+    status: 'Open',
+    bids: 5
+  },
+]
+
+// interface ShowingSection = 
 const JobCastPage = () => {
-  
-  const loading = true
 
-  if(loading)return <BuildHiveLoader/>
-  
+  const setTitle = usePageTitle()
+  useEffect(() => {
+    setTitle('Job Cast')
+  }, [])
+  const loading = false
+  const [jobCast, setJobCast] = useState(false)
+  const [showFilters, setShowFilters] = useState(false)
+  const [showSection, setShowSection] = useState<'postedJobs' | 'availableJobs'>('postedJobs')
+
+  if (loading) return <BuildHiveLoader />
+
   return (
-    <div>JobCastPage</div>
+    <div className="flex flex-col p-4 gap-4 max-h-full ">
+      <div
+        onClick={() => setJobCast(!jobCast)}
+        className="flex w-fit gap-3 self-end mx-2">
+        <p className="">JobCast Off</p>
+        <div className={`${jobCast ? 'bg-primary-purple justify-end' : 'bg-slate-200 justify-start'} w-8 h-4 bg-gray-400 rounded-[20px]  overflow-visible flex items-center`}>
+          <div className={`${jobCast ? 'right-[-3px]' : 'left-[-3px]'} h-5 aspect-square relative  rounded-[50%] bg-light-white border border-black `}></div>
+        </div>
+      </div>
+      <div className="flex items-center justify-around shadow-md p-4 ">
+        <SlidersHorizontal
+          onClick={() => setShowFilters(!showFilters)}
+          className="" />
+        <button type="button" className="bg-accent-purple p-1 text-white  shadow-sm focus:shadow-md self-center"> Map</button>
+        <button type="button" className="bg-accent-purple p-1 text-white  shadow-sm focus:shadow-md self-center"> Post Jobs</button>
+      </div>
+      {/* FILTERS SECTION */}
+      <div className={`${showFilters ? 'flex' : 'hidden'} absolute top-0 left-0 w-full h-full flex-center`}>
+        {/* FILTERS CARD */}
+        <div className='border border-black relative z-10 bg-light-white h-[300px] min-w-[clamp(200px,100%,300px)] sm:max-w-[300px] rounded'>
+          <X
+            onClick={() => setShowFilters(!showFilters)}
+            className="absolute top-[-9px] right-[-9px] rounded-[50%] bg-light-white" />
+          {/* FILTERS */}
+          <div className="flex flex-col justify-around p-4 gap-4">
+            <p className="border-b self-center border-black w-fit font-bold text-lg md:text-2xl">
+              Filters
+            </p>
+            <div className="flex flex-col gap-4">
+              <label className='flex justify-between'>Occupation:
+                <select name="occupation" className="ml-4 bg-light-white p-1 border rounded-md border-dark-black">
+                  <option value="electrician">Electrician</option>
+                  <option value="electrician">Electrician</option>
+                  <option value="electrician">Electrician</option>
+                  <option value="electrician">Electrician</option>
+                  <option value="electrician">Electrician</option>
+                  <option value="electrician">Electrician</option>
+                </select>
+              </label>
+              <label className='flex justify-between'>Distance:
+                <select name="occupation" className="ml-4 bg-light-white p-1 border rounded-md border-dark-black">
+                  <option value="electrician">5km</option>
+                  <option value="electrician">5km</option>
+                  <option value="electrician">5km</option>
+                  <option value="electrician">5km</option>
+                  <option value="electrician">5km</option>
+                </select>
+              </label>
+              <label className='flex justify-between'>Availability:
+                <select name="occupation" className="ml-4 bg-light-white p-1 border rounded-md border-dark-black">
+                  <option value="electrician">Available</option>
+                  <option value="electrician">Busy</option>
+                </select>
+              </label>
+            </div>
+            <button type="button" className="bg-accent-purple p-1 text-white  shadow-sm focus:shadow-md self-center"> Apply filters</button>
+          </div>
+        </div>
+        <div
+          onClick={() => setShowFilters(!showFilters)}
+          className="absolute z-9 w-screen  h-screen top-0 right-0 left-0 bottom-0 bg-slate-300 opacity-60" ></div>
+      </div>
+      {/*JOB AVAILABILITY TOGGLE SECTION*/}
+      <div className="flex-center gap-2 lg:hidden">
+        <button
+          onClick={() => { setShowSection('availableJobs') }}
+          type="button"
+          className={`${showSection === 'availableJobs' ? 'bg-accent-purple' : 'bg-light-white '} bg-accent-purple p-1 shadow-md focus:shadow-md self-center`}> Available Tradies</button>
+        <button
+          onClick={() => { setShowSection('postedJobs') }}
+          type="button"
+          className={`${showSection === 'postedJobs' ? 'bg-accent-purple' : 'bg-light-white '} bg-accent-purple p-1 shadow-md focus:shadow-md self-center`}> My Posted Jobs</button>
+      </div>
+      {/* JOB AVAILABILITY SECTION */}
+      <div className={`flex w-full gap-4 max-h-full overflow-hidden hide-scroll`}>
+        <div className={`${showSection === 'availableJobs' ? 'flex' : 'hidden'}  lg:flex flex-col w-full `}>
+          <p className="mb-2 text-center text-dark-black font-bold md:text-lg">Available Tradies</p>
+          <div className="flex flex-col w-full gap-4 max-h-full overflow-auto hide-scroll items-center">
+            {
+              tradies.map((tradie, index) => (
+                <div
+                  key={index}
+                  className="flex items-center w-full border min-w-[200px] max-w-[400px] border-slate-400 p-2 rounded-md">
+                  <img
+                    className="w-8 aspect-square mx-2 md:w-12 h-8 md:h-12"
+                    src={tradie.image}
+                    alt={tradie.name} />
+                  {/* <div className="flex w-full"> */}
+                  <div className="flex w-full px-2 items-center border-l">
+                    <div className="flex flex-col w-full">
+                      <p className="font-bold">{tradie.name}</p>
+                      <p className="">{tradie.occupation}</p>
+                      <p className="">{tradie.distance}</p>
+                      <StatusComp
+                        status={tradie.availability.toUpperCase()}
+                      />
+                    </div>
+                    <div className="w-full flex gap-2 flex-col">
+                      <button type="button" className="bg-light-white p-1 border border-black">Message</button>
+                      <button type="button" className="bg-accent-purple p-1 border text-white border-black">Request Job</button>
+                    </div>
+                  </div>
+                  {/* </div> */}
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div className={`${showSection === 'postedJobs' ? 'flex' : 'hidden'}  lg:flex flex-col w-full `}>
+          <p className="mb-2 text-center text-dark-black font-bold md:text-lg">My Posted Jobs</p>
+          <div className="flex flex-col w-full gap-4 max-h-full overflow-auto hide-scroll items-center">
+            {
+              jobsPosted.map((job, index) => (
+                <div
+                  key={index}
+                  className="flex items-center w-full border min-w-[200px] max-w-[400px] border-slate-400 p-2 rounded-md">
+                  {/* <div className="flex w-full"> */}
+                  <div className="flex w-full px-2 items-center border-l">
+                    <div className="flex flex-col w-full">
+                      <p className="font-bold text-lg md:text-xl lg:text-2xl">{job.title}</p>
+                      <p className="text-sm md:text-base">Budget: ${job.budget}</p>
+                      <p className="text-sm md:text-base">Posted: {parseDate(job.posted)}</p>
+                    </div>
+                    <div className="w-1/4 flex-center gap-2 flex-col">
+                      <StatusComp
+                        status={job.status}
+                      />
+                      <p className="text-sm md:text-base">Bids: {job.bids}</p>
+                    </div>
+                  </div>
+                  {/* </div> */}
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
