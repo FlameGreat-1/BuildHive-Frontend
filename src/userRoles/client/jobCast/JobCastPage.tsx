@@ -159,12 +159,16 @@ const JobCastPage = () => {
   const [jobCast, setJobCast] = useState(false)
   const [showFilters, setShowFilters] = useState(false)
   const [showSection, setShowSection] = useState<'postedJobs' | 'availableJobs'>('availableJobs')
-  const [showTradieProfile, setShowTradieProfile] = useState(true)
+  const [showTradieProfile, setShowTradieProfile] = useState(false)
+  const [showJobRequestForm, setShowJobRequestForm] = useState(false)
   const showProfile = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement
+    // if (target.id === 'jobReqBtn') setShowJobRequestForm(true)
     if (target.id === 'profileCover') setShowTradieProfile(false)
-    // if (target.id === 'card') { return }
-    // else { setShowTradieProfile(false) }
+  }
+  const showJobReqForm = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement
+    if (target.id === 'jobReqFormCover') setShowJobRequestForm(false)
   }
   if (loading) return <BuildHiveLoader />
 
@@ -219,8 +223,10 @@ const JobCastPage = () => {
               </label>
               <label className='flex justify-between'>Availability:
                 <select name="occupation" className="ml-4 bg-light-white p-1 border rounded-md border-dark-black">
+                  <option value="electrician">All</option>
                   <option value="electrician">Available</option>
                   <option value="electrician">Busy</option>
+                  <option value="electrician">Unavailable</option>
                 </select>
               </label>
             </div>
@@ -253,16 +259,18 @@ const JobCastPage = () => {
                   key={index}
                   className="w-full flex justify-center">
                   <div
-                    // id="tradie"
-                    onClick={() => setShowTradieProfile(true)}
+                    id="tradie"
                     className="flex items-center w-full border min-w-[200px] max-w-[400px] border-slate-400 p-2 rounded-md">
                     <img
                       className="w-8 aspect-square mx-2 md:w-12 h-8 md:h-12"
                       src={tradie.image}
                       alt={tradie.name} />
                     {/* <div className="flex w-full"> */}
-                    <div className="flex w-full px-2 items-center border-l">
-                      <div className="flex flex-col w-full">
+                    <div
+                      className="flex w-full px-2 items-center border-l">
+                      <div
+                        onClick={() => setShowTradieProfile(true)}
+                        className="flex flex-col w-full">
                         <p className="font-bold">{tradie.name}</p>
                         <p className="">{tradie.occupation}</p>
                         <p className="">{tradie.distance}</p>
@@ -272,11 +280,15 @@ const JobCastPage = () => {
                       </div>
                       <div className="w-full flex gap-2 flex-col">
                         <button type="button" className="bg-light-white p-1 border border-black">Message</button>
-                        <button type="button" className="bg-accent-purple p-1 border text-white border-black">Request Job</button>
+                        <button type="button"
+                          id="jobReqBtn"
+                          onClick={() => setShowJobRequestForm(true)}
+                          className="bg-accent-purple p-1 border text-white border-black">Request Job</button>
                       </div>
                     </div>
                     {/* </div> */}
                   </div>
+                  {/* Tradie Profile */}
                   <div
                     onClick={showProfile}
                     id="profileCover"
@@ -307,14 +319,68 @@ const JobCastPage = () => {
                           </ul>
                         </div>
                         <div className="flex gap-2 p-2 self-center">
-                          <button type="button" 
-                          onClick={()=>{setShowTradieProfile(false)}}
-                          className="bg-accent-purple p-1 border text-white border-black">Send Job Request</button>
-                          <button type="button" 
-                          onClick={()=>{setShowTradieProfile(false)}}
-                          className="bg-light-white p-1 border text-black border-black">Close</button>
+                          <button type="button"
+                            onClick={() => { setShowJobRequestForm(true); setShowTradieProfile(false) }}
+                            className="bg-accent-purple p-1 border text-white border-black">Send Job Request</button>
+                          <button type="button"
+                            onClick={() => { setShowTradieProfile(false) }}
+                            className="bg-light-white p-1 border text-black border-black">Close</button>
                         </div>
 
+                      </div>
+                    </div>
+                  </div>
+                  {/* JOB REQUEST FORM */}
+                  <div
+                    onClick={showJobReqForm}
+                    id="jobReqFormCover"
+                    className={`${showJobRequestForm ? 'flex' : 'hidden'} absolute w-full h-full flex-center bg-slate-500/20 top-0 bottom-0 left-0 right-0 p-4`}>
+                    <div
+                      onClick={showProfile}
+                      id="card"
+                      className="bg-light-white min-w-[clamp(200px,100%,800px)] min-h-[300px] border border-black rounded-md space-y-2 p-4">
+                      <p className="text-lg ml-4 md:text-2xl font-semibold ">Job Request Form</p>
+                      <div className="flex flex-col gap-2 w-full">
+                        <div className="flex flex-col gap-2 p-2 self-center w-full">
+                          <input
+                            className="p-2 bg-light-white w-full border rounded-md"
+                            title="Job Title" name="jobTitle" type="text" placeholder="Job Title"
+
+                          />
+                          <textarea
+                            className="p-2 bg-light-white w-full h-fit border rounded-md"
+                            rows={4}
+                            title="Job Description" name="jobDescription" placeholder="Description" />
+                          <div className="flex flex-col gap-1">
+                            <label htmlFor="attachments">
+                              Attachments
+                            </label>
+                            <input
+                              className=" bg-light-white border rounded-md p-2"
+                              title="Upload Attachments" type="file"
+                              accept='.jpg,.jpeg,.png,.pdf,.doc,.docx,.xls,.xlsx,.ppt.pptx'
+                              multiple
+                              name="attachments" id="attachments" />
+                          </div>
+                          <input
+                            className=" bg-light-white border rounded-md p-2"
+                            title="budget" type="number" name="budget" id="budget" placeholder="0" />
+                          <input
+                          onClick={(e)=>e.currentTarget.showPicker?.()}
+                            className=" bg-light-white border rounded-md p-2"
+                            title="date"
+                            type="date"
+                            name="date" />
+                          {/* BUTTON SECTION */}
+                          <div className="flex gap-2 self-end">
+                            <button type="button"
+                              onClick={() => { setShowJobRequestForm(false) }}
+                              className="bg-accent-purple p-1 border text-white border-black">Submit</button>
+                            <button type="button"
+                              onClick={() => { setShowJobRequestForm(false) }}
+                              className="bg-light-white p-1 border text-black border-black">Close</button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
