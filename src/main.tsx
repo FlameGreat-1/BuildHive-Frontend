@@ -16,7 +16,8 @@ import { clientRoutes } from './routes/clientRoutes.tsx';
 import { enterpriseRoutes } from './routes/enterpriseRoutes.tsx';
 import { tradieRoutes } from './routes/tradieRoutes.tsx';
 import NotFoundPage from './generalComponents/404page.tsx';
-
+import {store} from '@/store/store.ts';
+import { Provider } from 'react-redux';
 
 
 const router = createBrowserRouter([
@@ -72,13 +73,15 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path:'/*',
-    element:<NotFoundPage/>
+    path: '/*',
+    element: <NotFoundPage />
   }
 ])
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>
 )

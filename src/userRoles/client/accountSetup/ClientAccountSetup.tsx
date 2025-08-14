@@ -12,6 +12,10 @@ import MapWithSearch from "@/generalComponents/MapWithSearch";
 import { tradeOptions } from '@/utils/TradeOptions.ts'
 // import bgImage from '@/assets/images/accountSetupBg.webp'
 
+
+
+
+
 export interface Location {
   lat: number;
   lon: number;
@@ -45,26 +49,34 @@ const radios = [{
 ]
 
 export default function ClientAccountSetup() {
+
   const navigate = useNavigate()
+
   const [step, setStep] = useState(0);
+
   const [locations, setLocations] = useState<Location[]>([]);
+
   const [selectedTags, setSelectedTags] = useState<Option[]>([]);
+
   const [form, setForm] = useState({ businessName: '', frequency: '' })
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, } = e.target
     setForm({ ...form, [name]: value })
     console.log({ ...form, [name]: value })
   }
+
   const next = () => {
     if (step === 1) { navigate('complete'); return }
-    setStep((s) => s + 1);
+      setStep((s) => s + 1);
   }
+
   const prev = () => setStep((s) => s - 1);
-
-
-
-  return (
-    <div className="w-screen bg-light-white min-h-screen relative mx-auto space-y-6 text-black flex justify-center items-start pt-12">
+    
+    
+    
+    return (
+      <div className="w-screen bg-light-white min-h-screen relative mx-auto space-y-6 text-black flex justify-center items-start pt-12">
       <div
         className="flex-btw items-center w-full p-2 text-base md:text-lg max-w-[1200px] absolute top-0 z-10">
         <div
@@ -159,38 +171,7 @@ export default function ClientAccountSetup() {
             </div>
           </motion.div>
         )}
-        {/* {step === 2 && (
-          <motion.div
-            key="step3"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.4 }}
-            className="relative w-full h-screen max-h-[1000px] flex-center top-[-5rem]"
-          >
-            <img
-              src={bgImage}
-              alt="Account setup image"
-              className="absolute h-full w-full object-cover"
-            />
-            <div className=" w-full p-4 glassmorphic flex-center rounded-[20px] max-w-[90%] sm:max-w-[400px]">
-              <div className=" w-full max-w-[400px] flex-center flex-col gap-4 p-4">
-                <div className="flex-center flex-col gap-4 text-center ">
-                  <p className=" text-xl sm:text-2xl md:text-3">Welcome to Build Hive!</p>
-                  <p className="text-base md:text-lg">You're ready to post jobs and manage your projects with ease.</p>
-                </div>
-                <div className="flex-center flex-col gap-4 ">
-                  <PurpleBtn
-                    text='Post a Job Now'
-                    upperCase='false'
-                    classes="min-w-200px w-full max-w-[300px]"
-                  />
-                  <button className="text-primary-purple rounded-[20px] bg-light-white w-full min-w-[200px] max-w-[300px] "> Go to Dashboard →</button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )} */}
+       
       </AnimatePresence>
     </div>
   );

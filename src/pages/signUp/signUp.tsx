@@ -12,7 +12,8 @@ import UserSignUp from "./components/userSignUp"
 import { validateConfirmPassword, validateEmail, validatePassword, validateUsername } from "../../utils/validators"
 import ConfirmEmailSignUp from "./components/confirmEmailSignUp"
 import SignUpComplete from "./components/signUpComplete"
-
+// import {/*useSelector,*/useDispatch} from 'react-redux';
+// import {setRole} from '@/store/slices/userSlice'
 
 
 const roles = [
@@ -36,12 +37,23 @@ const roles = [
 
 const SignUp = () => {
 
+    // const dispatch = useDispatch();
+
     const [steps, setSteps] = useState(0)
+
     const [chosenRole, setChosenRole] = useState('')
+
     const [error, setError] = useState('')
+
     const [disableBtn, setDisableBtn] = useState(true)
+
     const nextStep = () => setSteps(steps + 1)
-    const pickChosenRole = (role: string) => setChosenRole(role)
+    
+    const pickChosenRole = (role: string) => {
+        setChosenRole(role.toLowerCase())
+        // dispatch(setRole(role))
+    }
+
     const [form, setForm] = useState({
         username: '',
         email: '',
@@ -123,11 +135,12 @@ const SignUp = () => {
             return
         }
         setForm({ ...form, [name]: value.trim() })
-        console.log(name, value)
+        // console.log(name, value)
 
 
         // setDisableBtn(false)
     }
+
     const handleSignIn = () => {
         
         const { username, email, password, confirmPassword, termsAndPolicy, newsletter } = form
@@ -145,7 +158,7 @@ const SignUp = () => {
         }
         try {
             if(isUsernameValid === true && isEmailValid === true && isPasswordValid === true && isConfirmPasswordValid === true && newsletter && termsAndPolicy){
-                console.log(form)
+                // console.log(form,chosenRole)
                 nextStep()
             }
             else {
@@ -158,13 +171,18 @@ const SignUp = () => {
         }
     }
 
+    const submitForm = ()=>{
+        console.log({...form,chosenRole})
+        nextStep()
+    }
+
     return (
         <div className="relative text-dark-black">
             <div className="w-screen bg-light-white h-screen flex flex-col text-black items-center px-4 pt-12 ">
                 <div
                     onClick={() => { }}
                     className="flex-btw w-full p-2 text-base md:text-lg max-w-[1200px] absolute top-0 z-10">
-                    <div className="flex-center p-2 gap-2">
+                    <div className="flex-center invisible p-2 gap-2">
                         <FontAwesomeIcon icon={faArrowLeft} />
                         <p className="font-semibold">Go Back</p>
                     </div>
@@ -209,12 +227,14 @@ const SignUp = () => {
                     }
                     {
                         steps === 2 && (
-                        <ConfirmEmailSignUp email={form.email} nextSteps={nextStep}/>
+                        <ConfirmEmailSignUp email={form.email} nextSteps={submitForm}/>
                         )
                     }
                     {
                         steps === 3 && (
-                        <SignUpComplete/>
+                        <SignUpComplete
+                        userRole={chosenRole}
+                        />
                         )
                     }
                 </AnimatePresence>

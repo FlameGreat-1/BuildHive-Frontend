@@ -10,6 +10,8 @@ interface props {
     nextSteps: () => void;
 }
 
+
+
 const ConfirmEmailSignUp = ({ email, nextSteps }: props) => {
 
     const [timer, setTimer] = useState(30)

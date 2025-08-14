@@ -2,10 +2,16 @@ import { motion } from "framer-motion"
 import image from '../../../assets/images/signUpComplete.png'
 import PurpleBtn from "../../../generalComponents/purpleBtn"
 import { useNavigate } from "react-router-dom"
+// import { useSelector } from "react-redux"
+// import type { RootState } from "@/store/store"
 
-const role = 'client'
+type props = {userRole:string;}
 
-const SignUpComplete = () => {
+const SignUpComplete = ({userRole}:props) => {
+  
+  // const userRole = useSelector((state:RootState)=>{state.user.userRole})
+  const role = userRole
+  
   const navigate = useNavigate()
   return (
     <motion.div

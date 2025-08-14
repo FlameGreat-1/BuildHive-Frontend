@@ -5,7 +5,7 @@ interface props {
     image: string;
     role: string;
     description: string;
-    chosenRole:string;
+    chosenRole:string | null;
     chooseRole:(role:string)=>void;
 }
 
@@ -21,7 +21,7 @@ const RoleCard = ({ image, role, description,chooseRole,chosenRole }: props) => 
             </div>
             <img src={image} alt={role} className="w-[40%] relative -top-6 bg-light-white sm:top-0 sm:w-1/2" />
             <p className="font-semibold hidden sm:block">{description}</p>
-            <FontAwesomeIcon icon={faCheckCircle} className={`${chosenRole === role? 'text-green-600':'hidden'} absolute top-2 right-4 `}/>
+            <FontAwesomeIcon icon={faCheckCircle} className={`${chosenRole === role.toLowerCase()? 'text-green-600':'hidden'} absolute top-2 right-4 `}/>
         </div>
     )
 }

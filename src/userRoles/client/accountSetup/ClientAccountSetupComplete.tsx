@@ -1,8 +1,12 @@
 import PurpleBtn from "@/generalComponents/purpleBtn"
 import { motion } from "framer-motion"
 import bgImage from '@/assets/images/accountSetupBg.webp'
+import { useNavigate } from "react-router-dom"
+
+
 
 const ClientAccountSetupComplete = () => {
+    const navigate = useNavigate()
     return (
         <motion.div
             key="step3"
@@ -29,7 +33,9 @@ const ClientAccountSetupComplete = () => {
                             upperCase='false'
                             classes="min-w-200px w-full max-w-[300px]"
                         />
-                        <button className="text-primary-purple rounded-[20px] bg-light-white w-full min-w-[200px] max-w-[300px] "> Go to Dashboard →</button>
+                        <button 
+                        onClick={()=>{navigate(`/app/client/home`)}}
+                        className="text-primary-purple rounded-[20px] bg-light-white w-full min-w-[200px] max-w-[300px] "> Go to Dashboard →</button>
                     </div>
                 </div>
             </div>

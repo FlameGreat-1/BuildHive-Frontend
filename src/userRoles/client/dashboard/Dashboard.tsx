@@ -11,9 +11,8 @@ const Dashboard = () => {
   const [showSidebar, setShowSidebar] = useState(false)
   const [title, setTitle] = useState('')
 
-
   return (
-    <div className="flex bg-light-white justify-center font-mono text-black w-screen h-screen relative overflow-hidden">
+    <div className="flex bg-light-white justify-center font-inter text-black w-screen h-screen relative overflow-hidden">
       <div
         // onClick={()=>setShowSidebar(false)}
         className={`${showSidebar ? 'xs:block' : 'hidden'} 

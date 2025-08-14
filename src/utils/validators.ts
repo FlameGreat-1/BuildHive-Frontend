@@ -32,7 +32,7 @@ export const validateUsername = (username: string): true | string => {
 
 export const validateOtp = (otp: string): true | string => {
   if (!otp) return "OTP is required";
-  if (!/^\d{4,6}$/.test(otp)) return "OTP must be 4 to 6 digits";
+  if (!/^\d{6}$/.test(otp)) return "OTP must be 6 digits";
   return true;
 };
 
