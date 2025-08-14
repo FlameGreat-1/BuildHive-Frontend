@@ -1,11 +1,20 @@
 import BuildHiveLoader from "@/generalComponents/BuildHiveLoader"
 import { SlidersHorizontal, X } from "lucide-react"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { usePageTitle } from "../dashboard/Dashboard"
 import profilePhoto from '@/assets/images/profilePic.png'
 import StatusComp from "../home/components/StatusComp"
 import parseDate from "@/utils/parseDate"
 
+const reviewInfo = {
+  rating: 4.5,
+  lastActive: new Date(-1000000),
+  recentReviews: [
+    'Great work!',
+    'Great work!',
+    'Great work!',
+  ]
+}
 
 const tradies = [
   {
@@ -149,8 +158,14 @@ const JobCastPage = () => {
   const loading = false
   const [jobCast, setJobCast] = useState(false)
   const [showFilters, setShowFilters] = useState(false)
-  const [showSection, setShowSection] = useState<'postedJobs' | 'availableJobs'>('postedJobs')
-
+  const [showSection, setShowSection] = useState<'postedJobs' | 'availableJobs'>('availableJobs')
+  const [showTradieProfile, setShowTradieProfile] = useState(true)
+  const showProfile = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement
+    if (target.id === 'profileCover') setShowTradieProfile(false)
+    // if (target.id === 'card') { return }
+    // else { setShowTradieProfile(false) }
+  }
   if (loading) return <BuildHiveLoader />
 
   return (
@@ -236,27 +251,73 @@ const JobCastPage = () => {
               tradies.map((tradie, index) => (
                 <div
                   key={index}
-                  className="flex items-center w-full border min-w-[200px] max-w-[400px] border-slate-400 p-2 rounded-md">
-                  <img
-                    className="w-8 aspect-square mx-2 md:w-12 h-8 md:h-12"
-                    src={tradie.image}
-                    alt={tradie.name} />
-                  {/* <div className="flex w-full"> */}
-                  <div className="flex w-full px-2 items-center border-l">
-                    <div className="flex flex-col w-full">
-                      <p className="font-bold">{tradie.name}</p>
-                      <p className="">{tradie.occupation}</p>
-                      <p className="">{tradie.distance}</p>
-                      <StatusComp
-                        status={tradie.availability.toUpperCase()}
-                      />
+                  className="w-full flex justify-center">
+                  <div
+                    // id="tradie"
+                    onClick={() => setShowTradieProfile(true)}
+                    className="flex items-center w-full border min-w-[200px] max-w-[400px] border-slate-400 p-2 rounded-md">
+                    <img
+                      className="w-8 aspect-square mx-2 md:w-12 h-8 md:h-12"
+                      src={tradie.image}
+                      alt={tradie.name} />
+                    {/* <div className="flex w-full"> */}
+                    <div className="flex w-full px-2 items-center border-l">
+                      <div className="flex flex-col w-full">
+                        <p className="font-bold">{tradie.name}</p>
+                        <p className="">{tradie.occupation}</p>
+                        <p className="">{tradie.distance}</p>
+                        <StatusComp
+                          status={tradie.availability.toUpperCase()}
+                        />
+                      </div>
+                      <div className="w-full flex gap-2 flex-col">
+                        <button type="button" className="bg-light-white p-1 border border-black">Message</button>
+                        <button type="button" className="bg-accent-purple p-1 border text-white border-black">Request Job</button>
+                      </div>
                     </div>
-                    <div className="w-full flex gap-2 flex-col">
-                      <button type="button" className="bg-light-white p-1 border border-black">Message</button>
-                      <button type="button" className="bg-accent-purple p-1 border text-white border-black">Request Job</button>
+                    {/* </div> */}
+                  </div>
+                  <div
+                    onClick={showProfile}
+                    id="profileCover"
+                    className={`${showTradieProfile ? 'flex' : 'hidden'} absolute w-full h-full flex-center bg-slate-500/20 top-0 bottom-0 left-0 right-0 p-4`}>
+                    <div
+                      onClick={showProfile}
+                      id="card"
+                      className="bg-light-white min-w-[clamp(200px,100%,400px)] min-h-[300px] border border-black rounded-md space-y-2 p-4">
+                      <p className="text-lg ml-4 md:text-2xl font-semibold ">Tradie Profile</p>
+                      <div className="flex flex-col gap-2">
+                        <div className="flex gap-4 self-center">
+                          <img
+                            className="w-12 md:w-16 aspect-square object-contain"
+                            src={tradie.image}
+                            alt={tradie.name} />
+                          <div className="flex flex-col ">
+                            <p>{tradie.name}</p>
+                            <p>Rating: {reviewInfo.rating}/5</p>
+                            <p>Last Active: {parseDate(reviewInfo.lastActive)}</p>
+                          </div>
+                        </div>
+                        <div className="mx-4">
+                          <p className="md:text-lg font-semibold">Recent Reviews</p>
+                          <ul className="list-none">
+                            {reviewInfo.recentReviews.map((review, index) => (
+                              <li className="mx-auto w-full" key={index}>{review}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="flex gap-2 p-2 self-center">
+                          <button type="button" 
+                          onClick={()=>{setShowTradieProfile(false)}}
+                          className="bg-accent-purple p-1 border text-white border-black">Send Job Request</button>
+                          <button type="button" 
+                          onClick={()=>{setShowTradieProfile(false)}}
+                          className="bg-light-white p-1 border text-black border-black">Close</button>
+                        </div>
+
+                      </div>
                     </div>
                   </div>
-                  {/* </div> */}
                 </div>
               ))
             }
@@ -271,7 +332,7 @@ const JobCastPage = () => {
                   key={index}
                   className="flex items-center w-full border min-w-[200px] max-w-[400px] border-slate-400 p-2 rounded-md">
                   {/* <div className="flex w-full"> */}
-                  <div className="flex w-full px-2 items-center border-l">
+                  <div className="flex w-full px-2 items-center ">
                     <div className="flex flex-col w-full">
                       <p className="font-bold text-lg md:text-xl lg:text-2xl">{job.title}</p>
                       <p className="text-sm md:text-base">Budget: ${job.budget}</p>
