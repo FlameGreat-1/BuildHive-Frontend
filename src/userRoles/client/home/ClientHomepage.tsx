@@ -22,7 +22,7 @@ const dashboardInfo = [
     },
 ]
 
-const recentJobs = [
+export const recentJobs = [
     {
         tradie: 'John Doe',
         pic: tradiePic,
@@ -90,7 +90,8 @@ const quickActions = [
     },
     {
         icon: <PlusSquare />,
-        title: 'Create Task'
+        title: 'Create Task',
+        link:"create-task"
     },
     {
         icon: <BarChart3 />,
@@ -128,6 +129,7 @@ const ClientHome = () => {
                                 key={index}
                                 children={action.icon}
                                 title={action.title}
+                                link={action.link}
                             />
                         ))
                     }

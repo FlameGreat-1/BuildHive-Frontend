@@ -442,13 +442,17 @@ const JobCastPage = () => {
                           </div>
                           <input
                             className=" bg-light-white border rounded-md p-2"
-                            title="budget" type="number" name="budget" id="budget" placeholder="0" />
+                            title="budget" type="number" name="budget" id="budget" placeholder="Enter your Budget" />
+                            <div className="w-full flex flex-col">
+                            <label htmlFor="date">Delivery Date:</label>
                           <input
                             onClick={(e) => e.currentTarget.showPicker?.()}
                             className=" bg-light-white border rounded-md p-2"
+                            id="date"
                             title="date"
                             type="date"
                             name="date" />
+                            </div>
                           {/* BUTTON SECTION */}
                           <div className="flex gap-2 self-end">
                             <button type="button"

@@ -1,9 +1,12 @@
 // import { useEffect } from "react";
 
-type Prop = {status:string}
+type Prop = {
+    status: string;
+    classes?: string;
+}
 
 
-const StatusComp = ({status}:Prop)=>{
+const StatusComp = ({ status, classes }: Prop) => {
 
     const statusLower = status.toLowerCase()
     return (
@@ -15,6 +18,7 @@ const StatusComp = ({status}:Prop)=>{
             ${statusLower === ('available') && 'text-green-600'} 
             ${statusLower === ('open') && 'text-green-600'} 
             ${statusLower === ('busy') && 'text-yellow-600'} 
+            ${classes && classes}
         text-xs rounded-xl w-fit font-sans p-1 font-bold`}>
             {status}
         </div>

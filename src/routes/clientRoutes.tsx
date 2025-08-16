@@ -4,6 +4,7 @@ import ProtectedRoutes from "@/auth/protectedRoutes"
 import Dashboard from "@/userRoles/client/dashboard/Dashboard"
 import ClientHome from "@/userRoles/client/home/ClientHomepage"
 import JobCastPage from "@/userRoles/client/jobCast/JobCastPage"
+import CreateTask from "@/userRoles/client/jobCast/createTask/CreateTask"
 
 const isAuthenticated = true
 const role = 'client'
@@ -32,6 +33,10 @@ export const clientRoutes = [
                 {
                     path: 'home',
                     element: <ClientHome />
+                },
+                {
+                    path: 'home/create-task',
+                    element: <CreateTask />
                 },
                 {
                     path: 'job-cast',
