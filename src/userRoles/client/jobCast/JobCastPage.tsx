@@ -5,6 +5,9 @@ import { usePageTitle } from "../dashboard/Dashboard"
 import profilePhoto from '@/assets/images/profilePic.png'
 import StatusComp from "../home/components/StatusComp"
 import parseDate from "@/utils/parseDate"
+import MapButton from "./components/MapButton"
+import { dummyMarkers } from "./components/MarkerData"
+import PostedJobDetail from "./components/postedJobDetail"
 
 const reviewInfo = {
   rating: 4.5,
@@ -156,20 +159,43 @@ const JobCastPage = () => {
     setTitle('Job Cast')
   }, [])
   const loading = false
+
   const [jobCast, setJobCast] = useState(false)
+
   const [showFilters, setShowFilters] = useState(false)
+
   const [showSection, setShowSection] = useState<'postedJobs' | 'availableJobs'>('availableJobs')
+
   const [showTradieProfile, setShowTradieProfile] = useState(false)
+
+  const [showMessagePopup, setShowMessagePopup] = useState(false)
+
   const [showJobRequestForm, setShowJobRequestForm] = useState(false)
+
+  const [showJobDetails, setShowJobDetails] = useState(false)
+
+
   const showProfile = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement
     // if (target.id === 'jobReqBtn') setShowJobRequestForm(true)
     if (target.id === 'profileCover') setShowTradieProfile(false)
   }
+
   const showJobReqForm = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement
     if (target.id === 'jobReqFormCover') setShowJobRequestForm(false)
   }
+
+  const showMessage = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement
+    if (target.id === 'messageCover') setShowMessagePopup(false)
+  }
+
+  const showDetails = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement
+    if (target.id === 'detailsCover') setShowJobDetails(false)
+  }
+
   if (loading) return <BuildHiveLoader />
 
   return (
@@ -186,7 +212,9 @@ const JobCastPage = () => {
         <SlidersHorizontal
           onClick={() => setShowFilters(!showFilters)}
           className="" />
-        <button type="button" className="bg-accent-purple p-1 text-white  shadow-sm focus:shadow-md self-center"> Map</button>
+        <MapButton
+          markers={dummyMarkers}
+        />
         <button type="button" className="bg-accent-purple p-1 text-white  shadow-sm focus:shadow-md self-center"> Post Jobs</button>
       </div>
       {/* FILTERS SECTION */}
@@ -230,12 +258,15 @@ const JobCastPage = () => {
                 </select>
               </label>
             </div>
-            <button type="button" className="bg-accent-purple p-1 text-white  shadow-sm focus:shadow-md self-center"> Apply filters</button>
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              type="button"
+              className="bg-accent-purple p-1 text-white  shadow-sm focus:shadow-md self-center"> Apply filters</button>
           </div>
         </div>
         <div
           onClick={() => setShowFilters(!showFilters)}
-          className="absolute z-9 w-screen  h-screen top-0 right-0 left-0 bottom-0 bg-slate-300 opacity-60" ></div>
+          className="absolute z-9 w-screen  h-screen top-0 right-0 left-0 bottom-0 bg-slate-500 opacity-50" ></div>
       </div>
       {/*JOB AVAILABILITY TOGGLE SECTION*/}
       <div className="flex-center gap-2 lg:hidden">
@@ -270,16 +301,19 @@ const JobCastPage = () => {
                       className="flex w-full px-2 items-center border-l">
                       <div
                         onClick={() => setShowTradieProfile(true)}
-                        className="flex flex-col w-full">
+                        className="flex flex-col  w-full">
                         <p className="font-bold">{tradie.name}</p>
-                        <p className="">{tradie.occupation}</p>
-                        <p className="">{tradie.distance}</p>
+                        <p className="text-sm">{tradie.occupation}</p>
+                        <p className="text-sm">{tradie.distance}</p>
                         <StatusComp
                           status={tradie.availability.toUpperCase()}
                         />
                       </div>
                       <div className="w-full flex gap-2 flex-col">
-                        <button type="button" className="bg-light-white p-1 border border-black">Message</button>
+                        <button
+                          onClick={() => setShowMessagePopup(true)}
+                          type="button"
+                          className="bg-light-white p-1 border border-black">Message</button>
                         <button type="button"
                           id="jobReqBtn"
                           onClick={() => setShowJobRequestForm(true)}
@@ -288,7 +322,7 @@ const JobCastPage = () => {
                     </div>
                     {/* </div> */}
                   </div>
-                  {/* Tradie Profile */}
+                  {/* Tradie Profile with reviews*/}
                   <div
                     onClick={showProfile}
                     id="profileCover"
@@ -330,11 +364,55 @@ const JobCastPage = () => {
                       </div>
                     </div>
                   </div>
+                  {/* MESSAGES POPUP*/}
+                  <div
+                    onClick={showMessage}
+                    id="messageCover"
+                    className={`${showMessagePopup ? 'flex' : 'hidden'} absolute w-full h-full flex-center bg-slate-500/20 top-0 bottom-0 left-0 right-0 p-4`}>
+                    <div
+                      onClick={showMessage}
+                      id="messagePopup"
+                      className="bg-light-white min-w-[clamp(200px,100%,400px)] min-h-[300px] border border-black rounded-md space-y-2 p-4">
+                      <p className="text-lg ml-4 md:text-2xl font-semibold ">Send Message</p>
+                      <div className="flex flex-col gap-2">
+                        <div className="flex gap-4 self-center">
+                          <img
+                            className="w-12 md:w-16 aspect-square object-contain"
+                            src={tradie.image}
+                            alt={tradie.name} />
+                          <div className="flex flex-col ">
+                            <p>{tradie.name}</p>
+                            <p>Rating: {reviewInfo.rating}/5</p>
+                            <p>Last Active: {parseDate(reviewInfo.lastActive)}</p>
+                          </div>
+                        </div>
+                        <div className="mx-4">
+                          <textarea
+                            className="w-full bg-light-white rounded-md border border-black p-2 shadow-sm shadow-accent-purple"
+                            name="sendMessage"
+                            placeholder="Type your message here"
+                            title="Request Message"
+                            id=""
+                            rows={4}
+                          />
+                        </div>
+                        <div className="flex gap-2 p-2 self-center">
+                          <button type="button"
+                            onClick={() => { setShowMessagePopup(false) }}
+                            className="bg-accent-purple p-1 border text-white border-black">Send Message</button>
+                          <button type="button"
+                            onClick={() => { setShowMessagePopup(false) }}
+                            className="bg-light-white p-1 border text-black border-black">Close</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
                   {/* JOB REQUEST FORM */}
                   <div
                     onClick={showJobReqForm}
                     id="jobReqFormCover"
-                    className={`${showJobRequestForm ? 'flex' : 'hidden'} absolute w-full h-full flex-center bg-slate-500/20 top-0 bottom-0 left-0 right-0 p-4`}>
+                    className={`${showJobRequestForm ? 'flex' : 'hidden'} absolute w-full h-full flex-center bg-slate-500/20 top-0 bottom-0 left-0 right-0 p-4 text-black`}>
                     <div
                       onClick={showProfile}
                       id="card"
@@ -366,7 +444,7 @@ const JobCastPage = () => {
                             className=" bg-light-white border rounded-md p-2"
                             title="budget" type="number" name="budget" id="budget" placeholder="0" />
                           <input
-                          onClick={(e)=>e.currentTarget.showPicker?.()}
+                            onClick={(e) => e.currentTarget.showPicker?.()}
                             className=" bg-light-white border rounded-md p-2"
                             title="date"
                             type="date"
@@ -384,6 +462,7 @@ const JobCastPage = () => {
                       </div>
                     </div>
                   </div>
+
                 </div>
               ))
             }
@@ -398,7 +477,9 @@ const JobCastPage = () => {
                   key={index}
                   className="flex items-center w-full border min-w-[200px] max-w-[400px] border-slate-400 p-2 rounded-md">
                   {/* <div className="flex w-full"> */}
-                  <div className="flex w-full px-2 items-center ">
+                  <div
+                    onClick={() => setShowJobDetails(true)}
+                    className="flex w-full px-2 items-center ">
                     <div className="flex flex-col w-full">
                       <p className="font-bold text-lg md:text-xl lg:text-2xl">{job.title}</p>
                       <p className="text-sm md:text-base">Budget: ${job.budget}</p>
@@ -416,6 +497,12 @@ const JobCastPage = () => {
               ))
             }
           </div>
+          {/* POSTED JOB DETAILS */}
+          <PostedJobDetail
+            showJobDetails={showJobDetails}
+            setShowJobDetailsFalse={() => setShowJobDetails(false)}
+            showDetails={showDetails}
+          />
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ const StatusComp = ({status}:Prop)=>{
             ${statusLower === ('available') && 'text-green-600'} 
             ${statusLower === ('open') && 'text-green-600'} 
             ${statusLower === ('busy') && 'text-yellow-600'} 
-        text-xs rounded-xl w-fit font-sans p-1`}>
+        text-xs rounded-xl w-fit font-sans p-1 font-bold`}>
             {status}
         </div>
     )
