@@ -8,6 +8,7 @@ import parseDate from "@/utils/parseDate"
 import MapButton from "./components/MapButton"
 import { dummyMarkers } from "./components/MarkerData"
 import PostedJobDetail from "./components/postedJobDetail"
+import { Link } from "react-router-dom"
 
 const reviewInfo = {
   rating: 4.5,
@@ -208,6 +209,7 @@ const JobCastPage = () => {
           <div className={`${jobCast ? 'right-[-3px]' : 'left-[-3px]'} h-5 aspect-square relative  rounded-[50%] bg-light-white border border-black `}></div>
         </div>
       </div>
+      {/* FILTERS, MAP, POST JOBS BUTTON */}
       <div className="flex items-center justify-around shadow-md p-4 ">
         <SlidersHorizontal
           onClick={() => setShowFilters(!showFilters)}
@@ -215,7 +217,9 @@ const JobCastPage = () => {
         <MapButton
           markers={dummyMarkers}
         />
-        <button type="button" className="bg-accent-purple p-1 text-white  shadow-sm focus:shadow-md self-center"> Post Jobs</button>
+        <button type="button" className="bg-accent-purple p-1   shadow-sm focus:shadow-md self-center">
+         <Link to='../home/post-jobs' className="text-white">Post Jobs</Link> 
+          </button>
       </div>
       {/* FILTERS SECTION */}
       <div className={`${showFilters ? 'flex' : 'hidden'} absolute top-0 left-0 w-full h-full flex-center`}>

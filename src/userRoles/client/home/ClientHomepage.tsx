@@ -86,7 +86,8 @@ const quickActions = [
     },
     {
         icon: <Plus />,
-        title: 'Post Jobs'
+        title: 'Post Jobs',
+        link:"post-jobs"
     },
     {
         icon: <PlusSquare />,
@@ -197,7 +198,7 @@ const ClientHome = () => {
                                             <p className="font-semibold max-w-[200px] truncate"
                                             title={job.description}
                                             >{job.description}</p>
-                                            <div className='flex-center  gap-1 p-2'>
+                                            <div className='flex-center  gap-2 p-2'>
                                                 <img
                                                     className="min-w-8 w-8 aspect-square object-center overflow-hidden rounded-[50%]"
                                                     src={job.pic}

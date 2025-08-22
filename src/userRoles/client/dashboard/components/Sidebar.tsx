@@ -65,19 +65,19 @@ const Sidebar = ({ showSidebar, hideSidebar }: SideBarProps) => {
             className={`${!showSidebar && ''} w-[90%] md:w-full  relative max-w-full p-4 z-[100] bg-light-white`}>
 
             <div className="w-full flex justify-between items-center">
-                <BuildHiveIcon />
+                <BuildHiveIcon hideText={true} />
                 <SideBar
                     className='md:hidden'
                     onClick={hideSidebar} />
             </div>
             <div className="rounded-md ring-2 mt-3 ring-gray-400/50 p-2">
-                <div className=" flex gap-2">
+                <div className=" flex gap-2" title='Jake Anderson'>
                     <img
                         src={profilePhoto}
                         alt="User"
                         className='rounded-[50%] object-center w-12'
                     />
-                    <div className="flex flex-col">
+                    <div className="flex flex-col md:hidden lg:block">
                         <p className="font-bold">Jake Anderson</p>
                         <p className="text-sm">Pro Member</p>
                     </div>
@@ -85,13 +85,14 @@ const Sidebar = ({ showSidebar, hideSidebar }: SideBarProps) => {
             </div>
             {/* MENU SECTION */}
             <div className='mt-2 flex-col flex gap-2 w-full p-2'>
-                <p className="text-black">MENU</p>
+                <p className="text-black border-b border-gray-400">MENU</p>
                 {
                     menuLinks.map((item, index) => (
                         <NavLink to={item.link}
                             key={index}
                         >
                             <div
+                                title={item.title}
                                 onClick={hideSidebar}
                                 className='w-full glassmorphic flex justify-start items-center gap-2 rounded-[15px] p-2 focus:font-bold hover:font-bold text-black cursor-pointer'
                             >
@@ -99,7 +100,7 @@ const Sidebar = ({ showSidebar, hideSidebar }: SideBarProps) => {
                                     className='w-8'
                                     src={item.image}
                                     alt={item.title} />
-                                <p className=''>{item.title}</p>
+                                <p className='md:hidden lg:block'>{item.title}</p>
                             </div>
                         </NavLink>
                     ))
@@ -114,6 +115,7 @@ const Sidebar = ({ showSidebar, hideSidebar }: SideBarProps) => {
                             key={index}
                             to={item.link}>
                             <div
+                                title={item.title}
                                 onClick={hideSidebar}
                                 className='w-full glassmorphic flex justify-start items-center gap-2 rounded-[15px] p-2   focus:font-bold hover:font-bold text-black cursor-pointer'
                             >
@@ -121,7 +123,7 @@ const Sidebar = ({ showSidebar, hideSidebar }: SideBarProps) => {
                                     className='w-8'
                                     src={item.image}
                                     alt={item.title} />
-                                <p className=''>{item.title}</p>
+                                <p className='md:hidden lg:block'>{item.title}</p>
                             </div>
                         </NavLink>
                     ))

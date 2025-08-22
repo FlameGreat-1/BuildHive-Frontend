@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { usePageTitle } from "../../dashboard/Dashboard"
 import parseDate from "@/utils/parseDate"
-import { recentJobs } from "../../home/ClientHomepage"
-import StatusComp from "../../home/components/StatusComp"
+import { recentJobs } from "../ClientHomepage"
+import StatusComp from "../components/StatusComp"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
-import QuickActions from "../../home/components/QuickActions"
+import QuickActions from "../components/QuickActions"
 import { ArrowDown, PlusSquare } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 import noJobImg from '@/assets/icons/createTasksJobIcon.png'
@@ -35,7 +35,9 @@ const CreateTask = () => {
                     <p>Go Back</p>
                 </div>
                 <QuickActions
-                    click={() => setCreateTasks(!createTasks)}
+                    click={() =>{ setCreateTasks(!createTasks)
+                        setAssignedTasks(false)
+                    }}
                     classes="md:flex-row"
                     children={<PlusSquare />}
                     title="Create Task"
@@ -50,9 +52,9 @@ const CreateTask = () => {
                             className="border border-slate-300 shadow-md hover:shadow-lg transition-all rounded-md p-2 md:px-4 flex flex-col w-full gap-1">
                             <div className="flex justify-between items-center w-full">
                                 <p className="font-semibold max-w-[200px] md:max-w-[300px] lg:max-w-[400px] text-sm md:text-md lg:text-lg truncate">{job.description}</p>
-                                <StatusComp 
-                                classes="md:text-lg"
-                                status={job.status} />
+                                <StatusComp
+                                    classes="md:text-lg"
+                                    status={job.status} />
                             </div>
                             <p className="text-gray-500 text-sm">{job.title}</p>
                             <div className="flex gap-1 justify-between w-full ">
@@ -116,7 +118,7 @@ const CreateTask = () => {
                                             htmlFor="taskDescription">Task Description:</label>
                                         <textarea
                                             placeholder="Enter the task title here"
-                                            className="bg-slate-500/50 w-full p-2 rounded-md placeholder:text-black/60"
+                                            className="bg-slate-500/50 w-full p-2 rounded-md  placeholder:text-black/60"
                                             name="taskDescription"
                                             id="taskDescription"
                                             rows={4}

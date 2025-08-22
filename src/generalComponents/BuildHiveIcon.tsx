@@ -3,10 +3,11 @@ import { motion } from 'framer-motion';
 
 interface Props {
     classes?:string;
+    hideText?:boolean;
 }
 
 
-const BuildHiveIcon = ({classes}:Props) => {
+const BuildHiveIcon = ({classes,hideText}:Props) => {
     return (
         <div className={`${classes && classes} flex-center gap-1`}>
             <img
@@ -20,8 +21,7 @@ const BuildHiveIcon = ({classes}:Props) => {
                 repeat:Infinity,
                 ease:'easeInOut'
             }}
-            
-            className="text-primary-purple text-lg md:text-2xl font-bold">Build Hive</motion.p>
+            className={`${hideText && 'md:hidden lg:block'} text-primary-purple text-lg md:text-2xl font-bold`}>Build Hive</motion.p>
         </div>
     )
 }

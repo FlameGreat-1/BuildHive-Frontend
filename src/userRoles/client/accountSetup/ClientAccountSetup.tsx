@@ -122,7 +122,7 @@ export default function ClientAccountSetup() {
               </div>
             </div>
             <div className="space-y-2 flex flex-col items-center">
-              <p className='font-semibold md:text-lg'>Job Posting Frequency</p>
+              <p className=' md:text-lg'>Job Posting Frequency</p>
               <div className="flex flex-wrap gap-2 ">
                 {
                   radios.map((radio, index) => (

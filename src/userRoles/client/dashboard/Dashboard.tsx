@@ -16,7 +16,7 @@ const Dashboard = () => {
       <div
         // onClick={()=>setShowSidebar(false)}
         className={`${showSidebar ? 'xs:block' : 'hidden'} 
-       md:block w-full md:max-w-[250px] lg:max-w-[300px] z-[100] absolute md:relative md:border-r-2 border-gray-400
+       md:block w-full md:max-w-[120px] lg:max-w-[300px] z-[100] absolute md:relative md:border-r-2 border-gray-400
       `}>
         <Sidebar
           showSidebar={showSidebar}
