@@ -52,13 +52,13 @@ const PostJobs = () => {
 
     const setTitle = usePageTitle()
 
-    const onSubmit = ()=>{
+    const onSubmit = () => {
         navigate('../home/job-live')
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         setTitle('Post New Job')
-    },[])
+    }, [])
 
 
     return (
@@ -72,7 +72,7 @@ const PostJobs = () => {
                 <img className="w-full md:w-1/2" src={postJobsImg} alt="Post Jobs Image" />
             </div>
             {/* CREATE JOB POSTING FORM */}
-            <form className='w-full border p-4 mb-4 flex flex-col gap-4 bg-light-white rounded-md border-slate-400 '>
+            <form className='w-full p-4 pb-8  flex flex-col gap-4 bg-light-white rounded-md border-slate-400 '>
                 <h4 className='font-semibold md:text-xl'>Create a New Job Posting</h4>
                 <div>
                     <label htmlFor='title'>Job Title</label>
@@ -91,7 +91,7 @@ const PostJobs = () => {
                 </div>
                 <div>
                     <label htmlFor='jobTypes'>Job Type</label>
-                    <select name="jobTypes"  id="jobTypes" onSelect={handleSelect}>
+                    <select name="jobTypes" id="jobTypes" onSelect={handleSelect}>
                         {
                             tradeOptions.map((option, i) => (
                                 <optgroup key={i} label={option.label}>
@@ -106,7 +106,7 @@ const PostJobs = () => {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor='budget'>Budget</label>
+                    <label htmlFor='budget'>Budget ($)</label>
                     <input type="number" name="budget" id="budget"
                         value={form.budget}
                         onChange={handleChange} placeholder='e.g. 15000'
@@ -127,17 +127,17 @@ const PostJobs = () => {
                     />
                 </div>
                 <div className="gap-2">
-                    <label className='border bg-accent w-fit p-2 rounded-md bg-accent-purple text-white' htmlFor="attachments">
-                        Browse
+                    <label className='border bg-accent w-fit p-2 rounded-md bg-accent-purple text-white cursor-pointer' htmlFor="attachments">
+                        Upload Attachments
                     </label>
-                        <div className='!flex-row gap-1 flex-wrap bg-light-white '>{Array.isArray(form.attachments) && form.attachments.map((file, i) => (
-                            <p className='bg-light-white text-secondary-blue w-fit' key={i}>
-                                {file.name} <X size={16} className='inline text-black' onClick={() => {
-                                    const updatedFiles = form.attachments.filter((_, index) => index !== i)
-                                    setForm({ ...form, attachments: updatedFiles })
-                                }} />
-                            </p>
-                        ))}</div>
+                    <div className='!flex-row gap-4 flex-wrap bg-light-white '>{Array.isArray(form.attachments) && form.attachments.map((file, i) => (
+                        <p className='bg-light-white text-secondary-blue w-fit' key={i}>
+                            {file.name}<X size={16} className='inline text-black' onClick={() => {
+                                const updatedFiles = form.attachments.filter((_, index) => index !== i)
+                                setForm({ ...form, attachments: updatedFiles })
+                            }} />
+                        </p>
+                    ))}</div>
                     <input
                         className=" bg-light-white hidden border rounded-md p-2"
                         title="Upload Attachments" type="file"

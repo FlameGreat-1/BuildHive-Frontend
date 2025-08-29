@@ -192,7 +192,7 @@ const ClientHome = () => {
                             recentJobs.map((job, index) => (
                                 <tr
                                     key={index}
-                                    className="shadow-md ring-gray-400 hover:shadow-lg focus:shadow-lg rounded-md  ">
+                                    className="shadow-md ring-2 ring-gray-400 hover:shadow-lg focus:shadow-lg rounded-md  ">
                                     <td className='text-center items-center p-2'>
                                         <div className="flex-start flex-col">
                                             <p className="font-semibold max-w-[200px] truncate"
