@@ -25,7 +25,7 @@ const QuickActions = ({ classes, children, title, link, click }: Props) => {
       title={title}
     >
       {children}
-      <p className="hidden md:block">{title}</p>
+      <p className="  md:block">{title}</p>
     </div>
   )
 }
