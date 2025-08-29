@@ -3,6 +3,8 @@ import TradieComponent, { type TradieCompProps } from "./components/TradieCompon
 import profilePic from '@/assets/images/profilePic.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons"
+import { useEffect } from "react"
+import { usePageTitle } from "../dashboard/Dashboard"
 
 
 const tradiesArray: TradieCompProps[] = [
@@ -90,6 +92,12 @@ const tradiesArray: TradieCompProps[] = [
 ]
 
 const BrowseTradies = () => {
+
+  const setTitle = usePageTitle()
+  useEffect(()=>{
+    setTitle('Browse Tradies')
+  },[])
+
   return (
     <div className="w-full flex sm:px-4 flex-col overflow-auto">
       <TradeSearch />
