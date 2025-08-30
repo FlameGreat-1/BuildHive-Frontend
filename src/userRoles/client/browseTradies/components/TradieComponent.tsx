@@ -13,7 +13,7 @@ export interface TradieCompProps {
 
 const TradieComponent = ({ pic, name, address, rating, noOfRatings, occupation }: TradieCompProps) => {
     return (
-        <Link to={`:${name.split(' ').join(('-'))}`}>
+        <Link to={`${name.split(' ').join(('-'))}`}>
 
             <div className='flex w-full min-w-[300px]  border border-primary-purple rounded-md shadow-md justify-between p-2 '>
                 <div className="flex gap-2 w-fit">
