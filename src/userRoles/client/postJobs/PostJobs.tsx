@@ -8,6 +8,7 @@ import { tradeOptions } from '@/utils/TradeOptions'
 import { X } from 'lucide-react'
 import { usePageTitle } from '../dashboard/Dashboard'
 import { useNavigate } from 'react-router-dom'
+import GoBackBtn from '@/generalComponents/goBackBtn'
 
 
 interface Form {
@@ -57,15 +58,15 @@ const PostJobs = () => {
     }
 
     useEffect(() => {
-        setTitle('Post New Job')
+        setTitle('Post Job')
     }, [])
 
 
     return (
         <div className="flex-col flex w-full h-full justify-self-center items-center p-4 lg:max-w-[80%] gap-4">
             <div className="flex justify-between w-full">
-                <h3 className="font-bold invisible sm:text-md md:text-xl lg:text-2xl">Post New Job</h3>
-                <p className="text-secondary-blue/80">Go back</p>
+                <h3 className="font-bold  sm:text-md md:text-xl lg:text-2xl">Post New Job</h3>
+                <GoBackBtn/>
             </div>
             <div className=" w-full hidden items-center flex-col md:flex-row justify-center">
                 <p className="w-full text-center md:w-1/2 max-w-[400px] sm:text-md md:text-xl lg:text-2xl">Describe your job in a few simple steps and get matched with skilled tradies near you. It only takes a minute!</p>

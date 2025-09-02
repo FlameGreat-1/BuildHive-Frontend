@@ -10,6 +10,8 @@ import JobPosted from "@/userRoles/client/postJobs/JobPosted"
 import MyJobs from "@/userRoles/client/myJobs/MyJobs"
 import BrowseTradies from "@/userRoles/client/browseTradies/BrowseTradies"
 import TradieProfile from "@/userRoles/client/browseTradies/TradieProfile"
+import JobManagement from "@/userRoles/client/jobManagement/JobManagement"
+import JobDetails from "@/userRoles/client/jobManagement/JobDetails"
 
 const isAuthenticated = true
 const role = 'client'
@@ -62,6 +64,14 @@ export const clientRoutes = [
                     {
                         path: 'home/browse-tradies/:tradie',
                         element: <TradieProfile />
+                    },
+                    {
+                        path: 'home/job-management',
+                        element: <JobManagement />
+                    },
+                    {
+                        path: 'home/job-details/:id',
+                        element: <JobDetails />
                     },
                     {
                         path: 'job-cast',
