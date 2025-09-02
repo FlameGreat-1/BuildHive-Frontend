@@ -103,10 +103,9 @@ const TradieProfile = () => {
                                         <p className={` ${showMore ? 'overflow-y-scroll pb-8 ' : 'line-clamp-[7] lg:line-clamp-[5]'} max-h-[250px]  `}>
                                             Hi, I'm Andrew, a fully licensed electrician with over 7 years of hands-on experience in residential and light commercial projects. I specialize in smart home installs, lighting upgrades, and switchboard rewiring. I take pride in neat finishes, fast turnarounds, Hi, I’m Jake a fully licensed electrician with over 7 years of hands-on experience in residential and light commercial projects. I specialize in smart home installs, lighting upgrades, and switchboard rewiring. I take pride in neat finishes, fast turnarounds
                                         </p>
-                                        {!showMore && <span
+                                        {!showMore ? <span
                                             onClick={() => setShowMore(true)}
-                                            className="text-primary-purple w-full absolute bottom-0 right-0 bg-light-white pl-2">...See more</span>}
-                                        {showMore && <span
+                                            className="text-primary-purple w-full absolute bottom-0 right-0 bg-light-white pl-2">...See more</span> : <span
                                             onClick={() => setShowMore(false)}
                                             className="text-primary-purple w-full absolute bottom-0 right-0 bg-light-white pl-2">...See less</span>}
                                     </div>
@@ -227,9 +226,9 @@ const TradieProfile = () => {
                                             :
                                             (
                                                 <div className="flex flex-col items-center justify-center p-4">
-                                                    <img 
-                                                    className="w-24"
-                                                    src={noReviews} alt="No Reviews Yet" />
+                                                    <img
+                                                        className="w-24"
+                                                        src={noReviews} alt="No Reviews Yet" />
                                                     <p className="text-primary-purple text-md font-semibold">No Reviews Yet</p>
                                                     <p>Once this tradie completes a few jobs, you’ll see feedback from clients here.</p>
                                                 </div>

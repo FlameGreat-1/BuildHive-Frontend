@@ -19,7 +19,7 @@ const JobComponent = ({ title, status, category, invoiced, materialsOrdered, pos
         <div className="p-4 flex flex-col gap-3 w-full max-w-[300px] md:max-w-[280px] shadow-md rounded-md border " >
             <div className="flex justify-between ">
                 <p className="font-bold text-primary-purple text-lg  md:text-xl">{title}</p>
-                <p className={`${status === 'active' ? 'bg-primary-purple text-white' : 'bg-gray-300' } capitalize border p-1 px-2 rounded-[20px] text-sm md:text-md`}>{status}</p>
+                <p className={`${status === 'active' || status === 'in progress' ? 'bg-primary-purple text-white' : 'bg-gray-300' } capitalize border p-1 px-2 rounded-[20px] text-sm md:text-md`}>{status}</p>
             </div>
             <p>{category}</p>
             <p><FontAwesomeIcon icon={faCalendar} /> {parseDate(postedOn)}</p>

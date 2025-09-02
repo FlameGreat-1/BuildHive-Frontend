@@ -34,7 +34,7 @@ const JobPosted = () => {
                     <PurpleBtn
                         upperCase="false"
                         text="View My Jobs"
-                        click={()=>navigate('../home/my-jobs')}
+                        click={()=>navigate('../home/job-management')}
                     />
                     <Link 
                     to={'../home/browse-tradies'}
