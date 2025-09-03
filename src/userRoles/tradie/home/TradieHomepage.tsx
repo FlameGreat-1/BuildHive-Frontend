@@ -5,20 +5,24 @@ import StatusComp from "./components/StatusComp"
 import parseDate from "@/utils/parseDate"
 import { usePageTitle } from "../dashboard/Dashboard"
 import { useEffect } from "react"
+import { Link } from "react-router-dom"
 
 
 const dashboardInfo = [
     {
         info: 4,
-        title: 'Jobs in Progress'
+        title: 'Jobs in Progress',
+        link:'jobs-in-progress'
     },
     {
         info: 10,
-        title: 'Bids Submitted'
+        title: 'Bids Submitted',
+        link:''
     },
     {
         info: `$${1111}`,
-        title: 'Total Earnings'
+        title: 'Total Earnings',
+        link:''
     },
 ]
 
@@ -111,12 +115,14 @@ const TradieHome = () => {
             <div className="grid w-full shadow-md py-4 sm:p-4 md:p-8 md:place-items-center  grid-cols-3 gap-2">
                 {
                     dashboardInfo.map((info, index) => (
-                        <div
+                        <Link to={info.link}>
+                         <div
                             key={index}
                             className="w-[100%] rounded-md shadow-lg glassmorphic bg-light-white/50 hover:border-black border hover:bg-accent-purple/40   p-2 text-center max-w-[150px] place-content-center justify-self-center aspect-square">
                             <p className=" text-sm md:text-xl">{info.title}</p>
                             <p className="font-bold text-md md:text-2xl">{info.info}</p>
                         </div>
+                        </Link>
                     ))
                 }
             </div>

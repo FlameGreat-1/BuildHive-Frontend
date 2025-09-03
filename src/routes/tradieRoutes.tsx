@@ -3,6 +3,7 @@ import ProtectedRoutes from "../auth/protectedRoutes"
 import TradieAccountSetupComplete from "@/userRoles/tradie/accountSetup/tradieAccountSetupComplete"
 import Dashboard from "@/userRoles/tradie/dashboard/Dashboard"
 import TradieHome from "@/userRoles/tradie/home/TradieHomepage"
+import JobsInProgress from "@/userRoles/tradie/jobsInProgess/JobsInProgress"
 
 const isAuthenticated = true
 const role = 'tradie'
@@ -24,18 +25,22 @@ export const tradieRoutes = [
                 path: 'account-setup/complete',
                 element: <TradieAccountSetupComplete />
             },
-             {
-                            path: '',
-                            element: <Dashboard />,
-                            children: [
-                                {
-                                    path: 'home',
-                                    element: <TradieHome />
-                                },
-                                
-            
-                            ]
-                        },
+            {
+                path: '',
+                element: <Dashboard />,
+                children: [
+                    {
+                        path: 'home',
+                        element: <TradieHome />
+                    },
+                    {
+                        path: 'home/jobs-in-progress',
+                        element: <JobsInProgress />
+                    },
+
+
+                ]
+            },
         ]
     }
 ]
