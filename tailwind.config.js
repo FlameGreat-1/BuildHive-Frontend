@@ -22,7 +22,10 @@ export default {
       screens: {
         'xs': {
           'max': '639px'
-        }
+        },
+        '2xs': {
+          'max': '450px'
+        },
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

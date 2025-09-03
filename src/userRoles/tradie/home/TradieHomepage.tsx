@@ -1,4 +1,4 @@
-import { BarChart3, Calendar, ClipboardList, MailCheck,  } from "lucide-react"
+import { BarChart3, Calendar, ClipboardList, MailCheck, } from "lucide-react"
 import QuickActions from "./components/QuickActions"
 import tradiePic from '@/assets/images/profilePic.png'
 import StatusComp from "./components/StatusComp"
@@ -12,17 +12,17 @@ const dashboardInfo = [
     {
         info: 4,
         title: 'Jobs in Progress',
-        link:'jobs-in-progress'
+        link: 'jobs-in-progress'
     },
     {
         info: 10,
         title: 'Bids Submitted',
-        link:''
+        link: 'bids-submitted'
     },
     {
         info: `$${1111}`,
         title: 'Total Earnings',
-        link:''
+        link: ''
     },
 ]
 
@@ -86,12 +86,13 @@ export const recentJobs = [
 const quickActions = [
     {
         icon: <MailCheck />,
-        title: 'Bids'
+        title: 'Bids',
+        link: "bids-submitted"
     },
     {
         icon: <ClipboardList />,
         title: 'My Jobs',
-        link: "post-jobs"
+        link: "jobs-in-progress"
     },
     {
         icon: <Calendar />,
@@ -116,12 +117,12 @@ const TradieHome = () => {
                 {
                     dashboardInfo.map((info, index) => (
                         <Link to={info.link}>
-                         <div
-                            key={index}
-                            className="w-[100%] rounded-md shadow-lg glassmorphic bg-light-white/50 hover:border-black border hover:bg-accent-purple/40   p-2 text-center max-w-[150px] place-content-center justify-self-center aspect-square">
-                            <p className=" text-sm md:text-xl">{info.title}</p>
-                            <p className="font-bold text-md md:text-2xl">{info.info}</p>
-                        </div>
+                            <div
+                                key={index}
+                                className="w-[100%] rounded-md shadow-lg glassmorphic bg-light-white/50 hover:border-black border hover:bg-accent-purple/40   p-2 text-center max-w-[150px] place-content-center justify-self-center aspect-square">
+                                <p className=" text-sm md:text-xl">{info.title}</p>
+                                <p className="font-bold text-md md:text-2xl">{info.info}</p>
+                            </div>
                         </Link>
                     ))
                 }
