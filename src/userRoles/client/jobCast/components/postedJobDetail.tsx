@@ -42,7 +42,7 @@ const job = {
 
 const PostedJobDetail = ({ showJobDetails, setShowJobDetailsFalse, showDetails }: JobDetailsProps) => {
 
-    const [assigned,setAssigned]=useState(false)
+    const [assigned, setAssigned] = useState(false)
 
     return (
         <div
@@ -54,15 +54,15 @@ const PostedJobDetail = ({ showJobDetails, setShowJobDetailsFalse, showDetails }
                 id="messagePopup"
                 className="bg-light-white min-w-[clamp(200px,100%,400px)] h-full border max-h-[600px] overflow-scroll border-black rounded-md space-y-2 p-4 flex flex-col hide-scroll">
                 <button
-                    onClick={() =>{ setShowJobDetailsFalse()}}
+                    onClick={() => { setShowJobDetailsFalse() }}
                     type="button"
                     className="bg-accent-purple p-1 text-white  shadow-sm focus:shadow-md self-end w-fit">Close</button>
-                <p className="font-semibold sm:text-lg md:text-xl">{job.title}</p>
+                <p className="font-bold text-lg sm:text-xl md:text-2xl">{job.title}</p>
                 <p>{job.description}</p>
                 <div className="flex flex-col p-4">
-                    <p className=""><b>Budget:</b> ${job.budget}</p>
-                    <p className=""><b>Deadline:</b> {parseDate(job.deadline)}</p>
-                    <p className=""><b>Location:</b> {job.location}</p>
+                    <p className=""><b className="font-semibold">Budget:</b> ${job.budget}</p>
+                    <p className=""><b className="font-semibold">Deadline:</b> {parseDate(job.deadline)}</p>
+                    <p className=""><b className="font-semibold">Location:</b> {job.location}</p>
                     <div className="">
                         <p>Attachments:</p>
                         <ul className="flex list-disc flex-col ml-4 text-sm">
@@ -79,12 +79,12 @@ const PostedJobDetail = ({ showJobDetails, setShowJobDetailsFalse, showDetails }
                             !assigned ? job.bids.map((bid, i) => (
                                 <div
                                     key={i}
-                                    className="bg-slate-500/40 w-full flex-col gap-2 p-2 rounded-md shadow-md text-sm">
+                                    className="bg-light-white border border-black w-full flex-col gap-2 p-2 rounded-md shadow-md text-sm">
                                     <p>{bid.name}</p>
                                     <p>Bid: {bid.bid}</p>
                                     <p>Proposed timeline: {bid.proposedTimeline}</p>
                                     <button
-                                    onClick={()=>setAssigned(true)}
+                                        onClick={() => setAssigned(true)}
                                         type="button"
                                         className="bg-accent-purple p-1 text-white  shadow-sm focus:shadow-md w-fit">Accept Bid</button>
                                 </div>

@@ -116,14 +116,14 @@ const TradieHome = () => {
             <div className="grid w-full shadow-md py-4 sm:p-4 md:p-8 md:place-items-center  grid-cols-3 gap-2">
                 {
                     dashboardInfo.map((info, index) => (
-                        <Link to={info.link}>
-                            <div
-                                key={index}
-                                className="w-[100%] rounded-md shadow-lg glassmorphic bg-light-white/50 hover:border-black border hover:bg-accent-purple/40   p-2 text-center max-w-[150px] place-content-center justify-self-center aspect-square">
+                        <div
+                            key={index}
+                            className="w-[100%] rounded-md shadow-lg glassmorphic bg-light-white/50 hover:border-black border hover:bg-accent-purple/40   p-2 text-center max-w-[150px] place-content-center justify-self-center aspect-square">
+                            <Link to={info.link}>
                                 <p className=" text-sm md:text-xl">{info.title}</p>
                                 <p className="font-bold text-md md:text-2xl">{info.info}</p>
-                            </div>
-                        </Link>
+                            </Link>
+                        </div>
                     ))
                 }
             </div>
