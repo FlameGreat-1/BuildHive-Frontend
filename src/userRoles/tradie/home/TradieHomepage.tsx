@@ -1,4 +1,4 @@
-import { BarChart3, Briefcase, Plus, PlusSquare } from "lucide-react"
+import { BarChart3, Calendar, ClipboardList, MailCheck,  } from "lucide-react"
 import QuickActions from "./components/QuickActions"
 import tradiePic from '@/assets/images/profilePic.png'
 import StatusComp from "./components/StatusComp"
@@ -14,11 +14,11 @@ const dashboardInfo = [
     },
     {
         info: 10,
-        title: 'Completed Jobs'
+        title: 'Bids Submitted'
     },
     {
         info: `$${1111}`,
-        title: 'Total Spent'
+        title: 'Total Earnings'
     },
 ]
 
@@ -81,26 +81,25 @@ export const recentJobs = [
 
 const quickActions = [
     {
-        icon: <Briefcase />,
-        title: 'Workers'
+        icon: <MailCheck />,
+        title: 'Bids'
     },
     {
-        icon: <Plus />,
-        title: 'Post Jobs',
-        link:"post-jobs"
+        icon: <ClipboardList />,
+        title: 'My Jobs',
+        link: "post-jobs"
     },
     {
-        icon: <PlusSquare />,
-        title: 'Create Task',
-        link:"create-task"
+        icon: <Calendar />,
+        title: 'Calender',
     },
     {
         icon: <BarChart3 />,
-        title: 'Reports'
+        title: 'Analytics'
     },
 ]
 
-const ClientHome = () => {
+const TradieHome = () => {
     const setTitle = usePageTitle()
     useEffect(() => {
         setTitle('Dashboard')
@@ -196,7 +195,7 @@ const ClientHome = () => {
                                     <td className='text-center items-center p-2'>
                                         <div className="flex-start flex-col">
                                             <p className="font-semibold max-w-[200px] truncate"
-                                            title={job.description}
+                                                title={job.description}
                                             >{job.description}</p>
                                             <div className='flex-center  gap-2 p-2'>
                                                 <img
@@ -233,4 +232,4 @@ const ClientHome = () => {
     )
 }
 
-export default ClientHome
+export default TradieHome

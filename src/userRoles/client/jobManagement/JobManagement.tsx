@@ -19,11 +19,13 @@ const JobManagement = () => {
         <div className="p-4 flex flex-col items-center gap-2">
             <div className="flex justify-between w-full">
                 <GoBackBtn />
-                <Link to='../home/post-jobs'>
-                    <p className="font-semibold md:text-lg">Create New Jobs <FontAwesomeIcon icon={faPlusCircle} className="text-primary-purple"
-                        size="xl"
-                    /></p>
-                </Link>
+                <p className="font-semibold md:text-lg ">Create New Jobs
+                    <Link to='../home/post-jobs'>
+                        <FontAwesomeIcon icon={faPlusCircle} className="text-primary-purple ml-2" 
+                            size="xl"
+                        />
+                    </Link>
+                </p>
             </div>
             <h3 className="w-full font-bold text-md md:text-xl ml-4">Job Management</h3>
             <div className="flex flex-wrap gap-2 w-full justify-center md:justify-between">
