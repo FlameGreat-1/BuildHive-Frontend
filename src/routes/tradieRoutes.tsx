@@ -4,6 +4,7 @@ import TradieAccountSetupComplete from "@/userRoles/tradie/accountSetup/tradieAc
 import Dashboard from "@/userRoles/tradie/dashboard/Dashboard"
 import TradieHome from "@/userRoles/tradie/home/TradieHomepage"
 import JobsInProgress from "@/userRoles/tradie/jobsInProgess/JobsInProgress"
+import JobDetails from "@/userRoles/tradie/jobDetails/JobDetails"
 
 const isAuthenticated = true
 const role = 'tradie'
@@ -36,6 +37,10 @@ export const tradieRoutes = [
                     {
                         path: 'home/jobs-in-progress',
                         element: <JobsInProgress />
+                    },
+                    {
+                        path: 'home/jobs/:id',
+                        element: <JobDetails />
                     },
 
 

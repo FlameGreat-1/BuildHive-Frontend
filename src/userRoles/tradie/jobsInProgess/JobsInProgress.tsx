@@ -1,5 +1,7 @@
-import { type FC, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 import profilePic from '@/assets/images/profilePic.png'
+import { useNavigate } from "react-router-dom";
+import { usePageTitle } from "../dashboard/Dashboard";
 
 type Job = {
     id: number;
@@ -37,6 +39,13 @@ const JobsInProgress: FC = () => {
         setSelectedJob(null);
     };
 
+    const navigate = useNavigate()
+    const setPageTitle = usePageTitle()
+
+    useEffect(()=>{
+        setPageTitle('Jobs In Progress')
+    },[])
+    
     return (
         <div className="p-6 flex flex-col gap-6">
             {/* Overview */}
@@ -53,7 +62,7 @@ const JobsInProgress: FC = () => {
                     <p className="text-sm text-gray-500">Overdue Jobs</p>
                     <p className="text-2xl font-bold">{jobs.filter((j) => j.dueInDays < 0).length}</p>
                 </div>
-                <div className="bg-white rounded-2xl border shadow p-4 flex flex-col items-center hidden">
+                <div className="bg-white rounded-2xl border shadow p-4  flex-col items-center hidden">
                     <p className="text-sm text-gray-500">Total Active Jobs</p>
                     <p className="text-2xl font-bold">
                         ${jobs.reduce((sum, job) => sum + job.price, 0).toLocaleString()}
@@ -126,6 +135,7 @@ const JobsInProgress: FC = () => {
                                     Message
                                 </button>
                                 <button
+                                onClick={()=>navigate(`../home/jobs/${job.id}`)}
                                     type="button"
                                     className="px-3 py-1 rounded-lg bg-accent-purple text-white text-sm hover:bg-accent-purple">
                                     View Details
