@@ -28,6 +28,7 @@ const TradieAccountSetupComplete = () => {
           </div>
           <div className="flex-center flex-col gap-4 ">
             <PurpleBtn
+              click={() => navigate('/app/tradie/job-search')}
               text='Browse Jobs Now'
               upperCase='false'
               classes="min-w-200px w-full max-w-[300px]"

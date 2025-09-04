@@ -13,6 +13,7 @@ const StatusComp = ({ status, classes }: Prop) => {
 
         <div className={`
             ${statusLower === 'pending' && 'text-red-400'} 
+            ${statusLower === 'cancelled' && 'text-red-400'} 
             ${statusLower === 'in progress' && 'text-blue-500'} 
             ${statusLower === ('completed') && 'text-green-500'} 
             ${statusLower === ('available') && 'text-green-600'} 
