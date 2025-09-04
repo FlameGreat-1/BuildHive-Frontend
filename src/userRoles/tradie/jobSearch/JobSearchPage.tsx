@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Search, Loader2 } from "lucide-react";
+import { Search, Loader2, SlidersHorizontal as FilterIcon, X } from "lucide-react";
 import StatusComp from "../home/components/StatusComp";
+import { usePageTitle } from "../dashboard/Dashboard";
 
 // Job type
 interface Job {
@@ -63,8 +64,6 @@ const dummyJobs: Job[] = [
 ];
 
 export default function JobSearch() {
-
-
   const [jobs, setJobs] = useState<Job[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -74,6 +73,13 @@ export default function JobSearch() {
   const [sortBy, setSortBy] = useState("latest");
   const [filterLocation, setFilterLocation] = useState("all");
   const [filterStatus, setFilterStatus] = useState("all");
+  const [showFilters, setShowFilters] = useState(false);
+
+
+  const setPageTitle = usePageTitle()
+  useEffect(()=>{
+    setPageTitle('Job Search')
+  },[])
 
   // Simulated API fetch
   const fetchJobs = async (pageNum: number) => {
@@ -143,10 +149,10 @@ export default function JobSearch() {
   return (
     <div className="max-w-6xl mx-auto p-4">
       {/* Header */}
-      <h1 className="text-2xl font-semibold mb-6">Search Jobs</h1>
+      {/* <h1 className="text-2xl font-semibold mb-6">Search Jobs</h1> */}
 
-      {/* Filters */}
-      <div className="flex flex-wrap gap-4 mb-6">
+      {/* Filters Bar */}
+      <div className="flex gap-4 mb-6 items-center">
         {/* Search */}
         <div className="flex items-center border rounded-lg px-3 py-2">
           <Search className="w-4 h-4 text-gray-400 mr-2" />
@@ -158,56 +164,98 @@ export default function JobSearch() {
             className="flex-1 outline-none border-none bg-transparent"
           />
         </div>
-
-        {/* Sort */}
-        <select
-          title='sort'
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
-          className="border w-fit rounded-lg px-3 py-2"
+        {/* Filter Icon */}
+        <button
+        type="button"
+          className="flex bg-transparent border-black items-center gap-2 border rounded-lg px-3 py-2 mr-4 text-primary-purple"
+          onClick={() => setShowFilters(true)}
+          title="Show filters"
         >
-          <option value="latest">Latest</option>
-          <option value="oldest">Oldest</option>
-          <option value="priceHigh">Price: High to Low</option>
-          <option value="priceLow">Price: Low to High</option>
-        </select>
-
-        {/* Location filter */}
-        <select
-          title='location filter'
-          value={filterLocation}
-          onChange={(e) => setFilterLocation(e.target.value)}
-          className="border w-fit rounded-lg px-3 py-2"
-        >
-          <option value="all">All</option>
-          <option value="Sydney">Sydney</option>
-          <option value="Melbourne">Melbourne</option>
-          <option value="Perth">Perth</option>
-          <option value="Adelaide">Adelaide</option>
-          <option value="Canberra">Canberra</option>
-        </select>
-
-        {/* Status filter */}
-        <select
-          title='status filter'
-          value={filterStatus}
-          onChange={(e) => setFilterStatus(e.target.value)}
-          className="border w-fit rounded-lg px-3 py-2"
-        >
-          <option value="all">All</option>
-          <option value="Pending">Pending</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Completed">Completed</option>
-          <option value="Cancelled">Cancelled</option>
-        </select>
+          <FilterIcon className="w-5 h-5" />
+          <span className="hidden sm:inline">Filters</span>
+        </button>
       </div>
+
+      {/* Filter Modal */}
+      {showFilters && (
+        <div className="absolute inset-0 z-50 flex  items-center justify-center bg-black/30">
+          <div className="bg-white rounded-xl mx-auto shadow-lg p-6 w-[90%] max-w-md relative">
+            <button
+            type="button"
+              className="absolute bg-transparent top-3 right-3 text-gray-400 hover:text-gray-700"
+              onClick={() => setShowFilters(false)}
+              aria-label="Close"
+            >
+              <X className="w-6  text-black h-6" />
+            </button>
+            <h2 className="text-lg font-semibold mb-4">Filters</h2>
+            <div className="flex flex-col gap-4">
+              {/* Sort */}
+              <div>
+                <label className="block mb-1 font-medium">Sort By</label>
+                <select
+                  title="sort"
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="border w-full rounded-lg px-3 py-2"
+                >
+                  <option value="latest">Latest</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="priceHigh">Price: High to Low</option>
+                  <option value="priceLow">Price: Low to High</option>
+                </select>
+              </div>
+              {/* Location filter */}
+              <div>
+                <label className="block mb-1 font-medium">Location</label>
+                <select
+                  title="location filter"
+                  value={filterLocation}
+                  onChange={(e) => setFilterLocation(e.target.value)}
+                  className="border w-full rounded-lg px-3 py-2"
+                >
+                  <option value="all">All</option>
+                  <option value="Sydney">Sydney</option>
+                  <option value="Melbourne">Melbourne</option>
+                  <option value="Perth">Perth</option>
+                  <option value="Adelaide">Adelaide</option>
+                  <option value="Canberra">Canberra</option>
+                </select>
+              </div>
+              {/* Status filter */}
+              <div>
+                <label className="block mb-1 font-medium">Status</label>
+                <select
+                  title="status filter"
+                  value={filterStatus}
+                  onChange={(e) => setFilterStatus(e.target.value)}
+                  className="border w-full rounded-lg px-3 py-2"
+                >
+                  <option value="all">All</option>
+                  <option value="Pending">Pending</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Completed">Completed</option>
+                  <option value="Cancelled">Cancelled</option>
+                </select>
+              </div>
+              <button
+              type="button"
+                className="mt-2 bg-primary-purple text-white px-4 py-2 rounded-lg"
+                onClick={() => setShowFilters(false)}
+              >
+                Apply Filters
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Jobs List */}
       <div className="space-y-4">
         {filteredJobs.map((job) => (
           <div
             key={job.id}
-            className="bg-white border rounded-xl shadow p-4 flex flex-col md:flex-row md:items-center justify-between gap-4"
+            className="bg-white border rounded-xl shadow p-4 flex flex-row md:items-center justify-between gap-4"
           >
             <div>
               <h2 className="font-semibold">{job.title}</h2>
@@ -219,7 +267,7 @@ export default function JobSearch() {
             <div className="text-right">
               <p className="font-semibold">${job.price}</p>
               {/* Replace this with your Status component */}
-              <StatusComp status={job.status}/>
+              <StatusComp status={job.status} />
             </div>
           </div>
         ))}
