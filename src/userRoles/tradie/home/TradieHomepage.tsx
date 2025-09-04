@@ -118,10 +118,10 @@ const TradieHome = () => {
                     dashboardInfo.map((info, index) => (
                         <div
                             key={index}
-                            className="w-[100%] rounded-md shadow-lg glassmorphic bg-light-white/50 hover:border-black border hover:bg-accent-purple/40   p-2 text-center max-w-[150px] place-content-center justify-self-center aspect-square">
+                            className=" w-[100%] rounded-md shadow-lg glassmorphic bg-light-white/50 hover:border-black border hover:bg-accent-purple/40   p-2 text-center max-w-[150px] place-content-center justify-self-center aspect-square">
                             <Link to={info.link}>
-                                <p className=" text-sm md:text-xl">{info.title}</p>
-                                <p className="font-bold text-md md:text-2xl">{info.info}</p>
+                                <p className=" text-sm md:text-xl text-dark-black">{info.title}</p>
+                                <p className="font-bold text-md md:text-2xl text-dark-black">{info.info}</p>
                             </Link>
                         </div>
                     ))

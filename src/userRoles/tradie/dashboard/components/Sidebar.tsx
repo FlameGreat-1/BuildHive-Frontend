@@ -23,9 +23,14 @@ const menuLinks = [
         link: 'home'
     },
     {
-        title: 'Job Cast',
+        title: 'Job Search',
         image: jobCastIcon,
-        link: 'job-cast'
+        link: 'job-search'
+    },
+    {
+        title: 'Earnings',
+        image: jobCastIcon,
+        link: 'earnings'
     },
     {
         title: 'Messages',

@@ -7,6 +7,8 @@ import JobsInProgress from "@/userRoles/tradie/jobsInProgess/JobsInProgress"
 import JobDetails from "@/userRoles/tradie/jobDetails/JobDetails"
 import BidsSubmitted from "@/userRoles/tradie/bids/bidsSubmitted"
 import BidDetails from "@/userRoles/tradie/bids/BidDetails"
+import Earnings from "@/userRoles/tradie/earnings/Earnings"
+import WithdrawFunds from "@/userRoles/tradie/earnings/WithdrawFunds"
 
 const isAuthenticated = true
 const role = 'tradie'
@@ -51,6 +53,14 @@ export const tradieRoutes = [
                     {
                         path: 'home/bids/:title',
                         element: <BidDetails />
+                    },
+                    {
+                        path: 'earnings',
+                        element: <Earnings />
+                    },
+                    {
+                        path: 'earnings/withdrawal',
+                        element: <WithdrawFunds />
                     },
 
 
